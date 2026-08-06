@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cebroid 2k26 - Game of Thrones Symposium</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Splash Screen -->
+    <div id="splash-screen">
+        <div class="splash-logo">
+            <img src="assets/Imperio CSE logo Golden.png" alt="GoT Symposium Logo">
+        </div>
+    </div>
+
+    <!-- Background -->
+    <div class="dragon-background"></div>
+    <div class="background-overlay"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-logo"><img src="assets/Imperio CSE logo Golden.png" alt="GoT Symposium Logo"></div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#events">Events</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <section id="home" class="hero">
+            <p class="hero-subtitle">Imperio CSE Proudly Presents,</p>
+            <h1 class="hero-title">CEBROID 2K26</h1>
+            <p class="hero-subtitle">The GOAT-ed Event Of ACET</p>
+        </section>
+
+        <section id="events" class="events-section">
+            <h2 class="section-title">The Battles to Come</h2>
+            <div class="events-grid" id="events-grid">
+                <!-- Cards injected via JS -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Full-screen Event Overlay -->
+    <div id="event-overlay" class="event-overlay hidden">
+        <div class="overlay-content">
+            <button id="close-overlay" class="close-btn"><i class="fas fa-times"></i></button>
+            
+            <div id="event-details-view" class="view-active">
+                <div class="event-header">
+                    <h2 id="detail-title">Event Title</h2>
+                    <h3 id="detail-theme">Theme: Character</h3>
+                </div>
+                <div class="event-body">
+                    <p id="detail-desc" class="desc-text"></p>
+                    <div class="rules-section">
+                        <h4>Rules of Engagement</h4>
+                        <ul id="detail-rules">
+                            <!-- Injected Rules -->
+                        </ul>
+                    </div>
+                    <div class="prize-section">
+                        <h4>Spoils of War</h4>
+                        <p id="detail-prizes"></p>
+                    </div>
+                    <div class="contact-section">
+                        <h4>Send a Raven</h4>
+                        <p id="detail-contact"></p>
+                    </div>
+                </div>
+                <button id="register-btn" class="cta-button">Register Now</button>
+            </div>
+
+            <div id="registration-form-view" class="hidden">
+                <div class="event-header">
+                    <h2>Pledge Your Fealty</h2>
+                    <h3 id="form-event-name">Event Name</h3>
+                </div>
+                <form id="registration-form" class="got-form">
+                    <input type="hidden" id="form-event-id" name="event_id">
+                    
+                    <div class="form-group">
+                        <label for="teamName">House / Team Name</label>
+                        <input type="text" id="teamName" name="teamName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="members">Members (Comma separated)</label>
+                        <input type="text" id="members" name="members" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Raven Address (Email)</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Scroll Number (Phone)</label>
+                        <input type="tel" id="phone" name="phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="college">Citadel (College/University)</label>
+                        <input type="text" id="college" name="college" required>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="back-to-details" class="text-btn">Back</button>
+                        <button type="submit" class="cta-button submit-btn">Submit Pledge</button>
+                    </div>
+                    <div id="form-message"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="coordinators-container">
+            <!-- Coordinator 1 -->
+            <div class="coordinator-card">
+                <a href="#" class="coord-link"><i class="fas fa-user"></i> Coordinator Name 1</a>
+                <a href="#" class="coord-link"><i class="fas fa-star"></i> Lead Organizer</a>
+                <a href="mailto:email@example.com" class="coord-link"><i class="fas fa-envelope"></i> email@example.com</a>
+                <a href="tel:+919876543210" class="coord-link"><i class="fas fa-phone"></i> +91 98765 43210</a>
+                <a href="#" class="coord-link"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+            </div>
+            <!-- Coordinator 2 -->
+            <div class="coordinator-card">
+                <a href="#" class="coord-link"><i class="fas fa-user"></i> Coordinator Name 2</a>
+                <a href="#" class="coord-link"><i class="fas fa-star"></i> Event Manager</a>
+                <a href="mailto:email@example.com" class="coord-link"><i class="fas fa-envelope"></i> email@example.com</a>
+                <a href="tel:+919876543210" class="coord-link"><i class="fas fa-phone"></i> +91 98765 43210</a>
+                <a href="#" class="coord-link"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+            </div>
+            <!-- Coordinator 3 -->
+            <div class="coordinator-card">
+                <a href="#" class="coord-link"><i class="fas fa-user"></i> Coordinator Name 3</a>
+                <a href="#" class="coord-link"><i class="fas fa-star"></i> Technical Head</a>
+                <a href="mailto:email@example.com" class="coord-link"><i class="fas fa-envelope"></i> email@example.com</a>
+                <a href="tel:+919876543210" class="coord-link"><i class="fas fa-phone"></i> +91 98765 43210</a>
+                <a href="#" class="coord-link"><i class="fab fa-linkedin"></i> LinkedIn Profile</a>
+            </div>
+        </div>
+        <p>&copy; 2026 Cebroid Technical Symposium.</p>
+        <p>Department of CSE - IMPERIO CSE.</p>
+        <p>Adhi College Of Engineering & technology.</p>
+    </footer>
+
+    <!-- GSAP & Flip Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/Flip.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
