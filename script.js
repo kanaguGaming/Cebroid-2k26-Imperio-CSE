@@ -303,7 +303,7 @@ backToDetailsBtn.addEventListener('click', () => {
 
 // Form Submission (Fetch API to Google Apps Script)
 // Note: REPLACE THIS URL WITH YOUR ACTUAL DEPLOYED GOOGLE APPS SCRIPT WEB APP URL
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyeJ4a5_FOIssrSxtj_qH80NYftHf7sSgf_BUCjLhnlb0DmonemEjJttUFivEKYEnZc/exec"; 
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyfjubLQDtMULrnEMOyRNig85SOJYWu6ZFl56clbjE2br-XEce-SRSUZmMyfu9vOhyB/exec"; 
 
 registrationForm.addEventListener('submit', async (e) => {
     e.preventDefault();
