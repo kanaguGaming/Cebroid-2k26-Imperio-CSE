@@ -303,7 +303,7 @@ backToDetailsBtn.addEventListener('click', () => {
 
 // Form Submission (Fetch API to Google Apps Script)
 // Note: REPLACE THIS URL WITH YOUR ACTUAL DEPLOYED GOOGLE APPS SCRIPT WEB APP URL
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyfjubLQDtMULrnEMOyRNig85SOJYWu6ZFl56clbjE2br-XEce-SRSUZmMyfu9vOhyB/exec"; 
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyjLcVoCW0_Cqf5Sw7Z2ciLTXuJPlAONZCB2ppeFrMHT4sjiivzG8D7ScjraoR3ZUvZ/exec"; 
 
 registrationForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -318,28 +318,30 @@ registrationForm.addEventListener('submit', async (e) => {
     const data = Object.fromEntries(formData.entries());
     
     try {
-        // Using no-cors completely bypasses browser CORS restrictions, which is essential when testing from file:/// 
-        await fetch(WEB_APP_URL, {
+        const response = await fetch(WEB_APP_URL, {
             method: 'POST',
-            mode: 'no-cors', // Critical for local testing
             headers: {
                 'Content-Type': 'text/plain;charset=utf-8',
             },
             body: JSON.stringify(data)
         });
         
-        // With no-cors, the response is opaque, meaning we can't read the JSON result.
-        // However, if fetch didn't throw a network error, the request was successfully sent.
-        msgDiv.innerHTML = `<span style="color: #27ae60;">The Maesters have recorded your entry!</span>`;
-        registrationForm.reset();
+        const result = await response.json();
         
-        setTimeout(() => {
-            closeOverlayBtn.click();
-        }, 2000);
+        if (result.status === 'success') {
+            msgDiv.innerHTML = `<span style="color: #27ae60;">The Maesters have recorded your entry!</span>`;
+            registrationForm.reset();
+            
+            setTimeout(() => {
+                closeOverlayBtn.click();
+            }, 2000);
+        } else {
+            throw new Error(result.message || "Server Error");
+        }
         
     } catch (error) {
         console.error("Submission failed:", error);
-        msgDiv.innerHTML = `<span style="color: #e74c3c;">A raven was intercepted (Network Error). Check your connection.</span>`;
+        msgDiv.innerHTML = `<span style="color: #e74c3c;">A raven was intercepted. The Google Script URL is invalid or blocked.</span>`;
     } finally {
         submitBtn.innerText = "Submit Pledge";
         submitBtn.disabled = false;
