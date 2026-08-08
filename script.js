@@ -10,7 +10,6 @@ const eventsData = [
         tagline: "A classic presentation of knowledge. Updates tracked by the Maesters.",
         desc: "Present your research papers to the esteemed Archmaesters. Originality and depth of knowledge will decide your fate in the Citadel.",
         rules: [
-            "Submit abstract before the deadline.",
             "10 minutes for presentation, 5 minutes for Q&A.",
             "Plagiarism leads to immediate disqualification.",
             "Presentation must be in English."
@@ -561,7 +560,7 @@ function showStep2Error(msg) {
 
 // ── Form Submission ───────────────────────────────────────────────────
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxhjuzzvMnufPqGcTPGRPfBZoPhKPmFg6XWbt5wcwvqw6nn9RuYypircLfvSU8-xhGA/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx1BsgrVUUeSSilE-ct5LztL0NKD9yz8l6KQbL_m72R9Vh9Zh-wzElfW7xdUnnzNQxO/exec";
 
 individualRegForm.addEventListener('submit', async (e) => {
     e.preventDefault();
@@ -607,11 +606,11 @@ individualRegForm.addEventListener('submit', async (e) => {
             const result = await response.json();
 
             if (result.status === 'success') {
-                msgDiv.innerHTML = `<span class="msg-success"><i class="fas fa-check-circle"></i> Registration submitted! Our team will verify your payment and send a confirmation to <strong>${data.email}</strong>. 🐉</span>`;
+                // Show cinematic full-screen success overlay
+                showSuccessOverlay(data.email);
                 individualRegForm.reset();
                 clearFilePreview();
                 showStep(1);
-                setTimeout(() => { msgDiv.innerHTML = ''; }, 8000);
             } else {
                 throw new Error(result.message || 'Server Error');
             }
@@ -626,6 +625,140 @@ individualRegForm.addEventListener('submit', async (e) => {
 
     reader.readAsDataURL(file);
 });
+
+
+// =====================================================================
+// SUCCESS OVERLAY — cinematic full-screen card after registration
+// =====================================================================
+const successOverlay   = document.getElementById('success-overlay');
+const successCard      = document.getElementById('success-card');
+const successExploreBtn= document.getElementById('success-explore-btn');
+const successEmailText = document.getElementById('success-email-text');
+const particlesCanvas  = document.getElementById('success-particles');
+let   particleAnim     = null;
+
+function showSuccessOverlay(email) {
+    // Inject email
+    successEmailText.textContent = email || '—';
+
+    // Show overlay
+    successOverlay.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+
+    // Re-trigger SVG stroke animations by cloning (reset dashoffset)
+    const svgEl = successCard.querySelector('.success-checkmark');
+    const clone = svgEl.cloneNode(true);
+    svgEl.replaceWith(clone);
+
+    // Card entrance
+    successCard.classList.remove('animate-in');
+    void successCard.offsetWidth; // force reflow
+    successCard.classList.add('animate-in');
+
+    // Particle burst
+    startParticles();
+}
+
+function hideSuccessOverlay() {
+    gsap.to(successCard, {
+        scale: 0.9,
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.in',
+        onComplete: () => {
+            successOverlay.classList.add('hidden');
+            successCard.style.transform = '';
+            successCard.style.opacity = '';
+            stopParticles();
+            document.body.style.overflow = 'auto';
+        }
+    });
+}
+
+// "Continue Exploring" — hide overlay and scroll to events section
+successExploreBtn.addEventListener('click', () => {
+    hideSuccessOverlay();
+    setTimeout(() => {
+        const eventsSection = document.getElementById('events');
+        if (eventsSection) {
+            eventsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    }, 350);
+});
+
+// ── Ambient particle system ──────────────────────────────────────────
+function startParticles() {
+    const canvas = particlesCanvas;
+    const ctx    = canvas.getContext('2d');
+    canvas.width  = canvas.offsetWidth;
+    canvas.height = canvas.offsetHeight;
+
+    const W = canvas.width;
+    const H = canvas.height;
+    const COLORS = ['#e65c00', '#ff8c42', '#990000', '#ffcc88', '#ff5500', '#ffd700'];
+    const COUNT  = 70;
+
+    const particles = Array.from({ length: COUNT }, () => ({
+        x:  W / 2 + (Math.random() - 0.5) * 60,
+        y:  H / 2 + (Math.random() - 0.5) * 60,
+        vx: (Math.random() - 0.5) * 4.5,
+        vy: (Math.random() - 0.5) * 4.5 - 1.5,
+        r:  Math.random() * 3 + 1.2,
+        alpha: 1,
+        decay: Math.random() * 0.012 + 0.008,
+        color: COLORS[Math.floor(Math.random() * COLORS.length)]
+    }));
+
+    let running = true;
+
+    function draw() {
+        if (!running) return;
+        ctx.clearRect(0, 0, W, H);
+        particles.forEach(p => {
+            p.x     += p.vx;
+            p.y     += p.vy;
+            p.vy    += 0.055; // gravity
+            p.alpha -= p.decay;
+            if (p.alpha < 0) p.alpha = 0;
+            ctx.save();
+            ctx.globalAlpha = p.alpha;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = p.color;
+            ctx.shadowBlur = 8;
+            ctx.shadowColor = p.color;
+            ctx.fill();
+            ctx.restore();
+        });
+        particleAnim = requestAnimationFrame(draw);
+    }
+
+    draw();
+
+    // Respawn after 2.5 s to keep ambient sparkle
+    setTimeout(() => {
+        if (!running) return;
+        particles.forEach(p => {
+            p.x     = W / 2 + (Math.random() - 0.5) * 120;
+            p.y     = H / 2 + (Math.random() - 0.5) * 120;
+            p.vx    = (Math.random() - 0.5) * 2;
+            p.vy    = (Math.random() - 0.5) * 2 - 0.5;
+            p.alpha = Math.random() * 0.4 + 0.1;
+            p.r     = Math.random() * 2 + 0.8;
+            p.decay = 0.003 + Math.random() * 0.005;
+        });
+    }, 2500);
+
+    particlesCanvas._stopFn = () => { running = false; };
+}
+
+function stopParticles() {
+    if (particleAnim) cancelAnimationFrame(particleAnim);
+    if (particlesCanvas._stopFn) particlesCanvas._stopFn();
+    const ctx = particlesCanvas.getContext('2d');
+    ctx.clearRect(0, 0, particlesCanvas.width, particlesCanvas.height);
+}
+
 
 
 // Interactive Dragon Scale Background Parallax
@@ -658,4 +791,66 @@ window.addEventListener('scroll', () => {
         duration: 0.5,
         ease: "power1.out"
     });
+
+    // Scroll-hint: hide when scrolled down, re-arm when back at top
+    if (scrollY > 80) {
+        hideScrollHint();
+    } else {
+        if (scrollHintShown) {
+            scrollHintShown = false;
+            resetScrollHintTimer();
+        }
+    }
+});
+
+
+// =====================================================================
+// SCROLL-DOWN HINT — shows after 5 s of staying on #home
+// =====================================================================
+const scrollHint = document.getElementById('scroll-down-hint');
+let scrollHintTimer = null;
+let scrollHintShown = false;
+let isHicking = false;
+
+function showScrollHint() {
+    if (scrollHintShown) return;
+    scrollHintShown = true;
+    scrollHint.classList.add('visible');
+
+    // "Hick" — native smooth micro-scroll down then back up
+    if (isHicking) return;
+    isHicking = true;
+    window.scrollTo({ top: 90, behavior: 'smooth' });
+    setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        setTimeout(() => { isHicking = false; }, 700);
+    }, 700);
+}
+
+function hideScrollHint() {
+    scrollHint.classList.remove('visible');
+    clearTimeout(scrollHintTimer);
+}
+
+function resetScrollHintTimer() {
+    clearTimeout(scrollHintTimer);
+    if (window.scrollY <= 80) {
+        scrollHintTimer = setTimeout(showScrollHint, 5000);
+    }
+}
+
+// Start the timer after splash ends
+(function waitForSplashEnd() {
+    const check = setInterval(() => {
+        if (splashScreen.style.display === 'none') {
+            clearInterval(check);
+            resetScrollHintTimer();
+        }
+    }, 200);
+})();
+
+// Dismiss on click — scroll to events
+scrollHint.addEventListener('click', () => {
+    hideScrollHint();
+    window.scrollTo({ top: document.getElementById('events').offsetTop, behavior: 'smooth' });
 });

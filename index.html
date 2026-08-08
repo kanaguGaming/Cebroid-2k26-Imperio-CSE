@@ -213,6 +213,7 @@
                             <button class="register-banner-btn" class="cta-button submit-btn" id="proceed-to-payment">
                                 Proceed to Payment <i class="fas fa-arrow-right"></i>
                             </button>
+                            
                         </div>
                         <div id="step1-error" class="step-error hidden"></div>
                     </div>
@@ -247,7 +248,7 @@
                                 </ol>
                                 <div class="pay-note">
                                     <i class="fas fa-info-circle"></i>
-                                    Your registration will be <strong>manually verified</strong> by our team. A confirmation mail will be sent only after verification.
+                                    <span>Your registration will be <strong>manually verified</strong> by our team. A confirmation mail will be sent only after verification.</span>
                                 </div>
                             </div>
                         </div>
@@ -281,7 +282,7 @@
 
                         <div class="form-actions">
                             <button type="button" class="text-btn" id="back-to-step1"><i class="fas fa-arrow-left"></i> Back</button>
-                            <button class="register-banner-btn" class="cta-button submit-btn" id="reg-submit-btn">
+                            <button type="submit" class="cta-button submit-btn" id="reg-submit-btn">
                                 Submit Registration <i class="fas fa-paper-plane"></i>
                             </button>
                         </div>
@@ -338,6 +339,79 @@
         <p>Department of CSE - IMPERIO CSE.</p>
         <p>Adhi College Of Engineering & technology.</p>
     </footer>
+
+    <!-- ══════════════════════════════════════════════════
+         REGISTRATION SUCCESS FULL-SCREEN OVERLAY
+         ══════════════════════════════════════════════════ -->
+    <div id="success-overlay" class="success-overlay hidden" aria-modal="true" role="dialog">
+
+        <!-- Ambient particles canvas -->
+        <canvas id="success-particles" class="success-particles-canvas"></canvas>
+
+        <!-- Glow rings -->
+        <div class="success-ring success-ring-1"></div>
+        <div class="success-ring success-ring-2"></div>
+        <div class="success-ring success-ring-3"></div>
+
+        <!-- Card -->
+        <div class="success-card" id="success-card">
+
+            <!-- Dragon crest icon -->
+            <div class="success-crest">
+                <div class="success-check-wrap">
+                    <svg class="success-checkmark" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle class="success-check-circle" cx="26" cy="26" r="24" stroke="url(#grad1)" stroke-width="2.5" fill="none"/>
+                        <path  class="success-check-tick"   d="M14 26 L22 34 L38 18" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                        <defs>
+                            <linearGradient id="grad1" x1="0" y1="0" x2="52" y2="52" gradientUnits="userSpaceOnUse">
+                                <stop offset="0%" stop-color="#990000"/>
+                                <stop offset="100%" stop-color="#e65c00"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- Badge -->
+            <span class="success-badge">Registration Received</span>
+
+            <!-- Heading -->
+            <h2 class="success-title">Your Pledge Has Been Sealed</h2>
+
+            <!-- Body message -->
+            <p class="success-msg">
+                We have received your registration.<br>
+                Our team will <strong>verify your payment</strong> and send a
+                <strong>confirmation mail</strong> to your inbox after verification.
+            </p>
+
+            <!-- Registrant email echo -->
+            <div class="success-email-chip" id="success-email-chip">
+                <i class="fas fa-envelope"></i>
+                <span id="success-email-text">—</span>
+            </div>
+
+            <!-- Divider -->
+            <div class="success-divider">
+                <span class="success-divider-icon"><i class="fas fa-dragon"></i></span>
+            </div>
+
+            <!-- CTA -->
+            <button class="success-explore-btn" id="success-explore-btn">
+                <i class="fas fa-compass"></i>
+                Continue Exploring
+            </button>
+
+            <!-- Fine print -->
+            <p class="success-fine">Check your spam folder if the mail doesn't arrive within 24 hours.</p>
+        </div>
+    </div>
+
+    <!-- Scroll Down Hint Toast -->
+    <div id="scroll-down-hint">
+        <i class="fas fa-chevron-down"></i>
+        <span>Scroll down to explore events</span>
+    </div>
 
     <!-- GSAP & Flip Plugin -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
