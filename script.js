@@ -761,21 +761,36 @@ function stopParticles() {
 
 
 
-// Interactive WebGL Background (Three.js) variables
-let targetMouseX = 0;
-let targetMouseY = 0;
-let targetScrollY = 0;
+// Interactive Dragon Scale Background Parallax
+const dragonBg = document.querySelector('.dragon-background');
 
+// Mouse movement parallax
 document.addEventListener('mousemove', (e) => {
+    // Only apply if the overlay is hidden (user is not filling form)
     if (eventOverlay.classList.contains('hidden')) {
-        targetMouseX = (e.clientX - window.innerWidth / 2) * 0.0005;
-        targetMouseY = (e.clientY - window.innerHeight / 2) * 0.0005;
+        const x = (window.innerWidth - e.pageX * 2) / 80;
+        const y = (window.innerHeight - e.pageY * 2) / 80;
+        
+        gsap.to(dragonBg, {
+            x: x,
+            y: y,
+            duration: 1.5,
+            ease: "power2.out"
+        });
     }
 });
 
+// Scroll parallax
 window.addEventListener('scroll', () => {
     const scrollY = window.scrollY;
-    targetScrollY = scrollY * 0.001;
+    
+    // Scale the background slightly as we scroll down and move it up
+    gsap.to(dragonBg, {
+        y: -scrollY * 0.2,
+        scale: 1 + (scrollY * 0.0003),
+        duration: 0.5,
+        ease: "power1.out"
+    });
 
     // Scroll-hint: hide when scrolled down, re-arm when back at top
     if (scrollY > 80) {
@@ -830,107 +845,3 @@ scrollHint.addEventListener('click', () => {
     hideScrollHint();
     window.scrollTo({ top: document.getElementById('events').offsetTop, behavior: 'smooth' });
 });
-
-// =====================================================================
-// WEBGL DYNAMIC DRAGON BACKGROUND (THREE.JS)
-// =====================================================================
-function initWebGLBackground() {
-    const canvas = document.getElementById('bg-canvas');
-    if (!canvas || !window.THREE) return;
-
-    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    const scene = new THREE.Scene();
-
-    // Use a perspective camera
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
-    camera.position.z = 5;
-
-    // Lights
-    const ambientLight = new THREE.AmbientLight(0xffffff, 0.2); // Darker ambient to let fire glow pop
-    scene.add(ambientLight);
-
-    const dirLight = new THREE.DirectionalLight(0xffeeb1, 0.8);
-    dirLight.position.set(5, 5, 2);
-    scene.add(dirLight);
-
-    // Texture Loader
-    const textureLoader = new THREE.TextureLoader();
-    
-    // Load maps
-    const diffuseMap = textureLoader.load('assets/diffuse.png');
-    const normalMap = textureLoader.load('assets/normal.png');
-    const emissionMap = textureLoader.load('assets/emission.png');
-
-    // Make textures repeat so we can scroll them infinitely
-    [diffuseMap, normalMap, emissionMap].forEach(tex => {
-        tex.wrapS = THREE.RepeatWrapping;
-        tex.wrapT = THREE.RepeatWrapping;
-        tex.repeat.set(4, 4); // Scale of the dragon scales
-    });
-
-    const geometry = new THREE.PlaneGeometry(20, 20, 64, 64);
-    const material = new THREE.MeshStandardMaterial({
-        map: diffuseMap,
-        normalMap: normalMap,
-        emissiveMap: emissionMap,
-        emissive: new THREE.Color(0xff4400),
-        emissiveIntensity: 1.0,
-        roughness: 0.7,
-        metalness: 0.2
-    });
-
-    const plane = new THREE.Mesh(geometry, material);
-    scene.add(plane);
-
-    const clock = new THREE.Clock();
-    let currentScrollY = 0;
-    let mouseX = 0;
-    let mouseY = 0;
-
-    function animate() {
-        requestAnimationFrame(animate);
-
-        const time = clock.getElapsedTime();
-
-        // 1. Breathing Glow
-        // Modulate emissive intensity with a sine wave (approx 0.3 to 1.7)
-        material.emissiveIntensity = 1.0 + Math.sin(time * 2.5) * 0.7;
-
-        // 2. Micro Shakes (Heartbeat effect)
-        // High frequency, low amplitude shake during the peak of the breath
-        const shakePeak = Math.pow(Math.sin(time * 2.5), 20); // Sharp peaks
-        const shakeAmt = shakePeak * 0.015;
-        plane.position.x = (Math.random() - 0.5) * shakeAmt;
-        plane.position.y = (Math.random() - 0.5) * shakeAmt;
-
-        // 3. React to Mouse & Scroll
-        // Smoothly interpolate current values towards targets
-        mouseX += (targetMouseX - mouseX) * 0.05;
-        mouseY += (targetMouseY - mouseY) * 0.05;
-        currentScrollY += (targetScrollY - currentScrollY) * 0.05;
-
-        // Parallax depth effect via rotation
-        plane.rotation.y = mouseX;
-        plane.rotation.x = mouseY;
-        
-        // Infinite scroll effect by offsetting UVs
-        diffuseMap.offset.y = -currentScrollY;
-        normalMap.offset.y = -currentScrollY;
-        emissionMap.offset.y = -currentScrollY;
-
-        renderer.render(scene, camera);
-    }
-
-    animate();
-
-    window.addEventListener('resize', () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-}
-
-window.addEventListener('load', initWebGLBackground);
