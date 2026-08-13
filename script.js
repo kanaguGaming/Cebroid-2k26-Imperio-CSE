@@ -7,6 +7,7 @@ const eventsData = [
         id: "paper_presentation",
         title: "Paper Presentation",
         theme: "The Highgarden Summit",
+        tier: "Tier 1",
         tagline: "A classic presentation of knowledge. Updates tracked by the Maesters.",
         desc: "Present your research papers to the esteemed Archmaesters. Originality and depth of knowledge will decide your fate in the Citadel.",
         rules: [
@@ -21,81 +22,10 @@ const eventsData = [
         img: "assets/Tyrell – Paper Presentation.png"
     },
     {
-        id: "debug_relay",
-        title: "Debug Relay",
-        theme: "The Storm's End Relay",
-        tagline: "15 pairs. Take turns debugging code. 'I drink and I know things.'",
-        desc: "A tag-team coding challenge. One member debugs while the other waits, then swap. Communication and quick thinking are your only allies.",
-        rules: [
-            "Exactly 2 members per team.",
-            "Only one member codes at a time.",
-            "Swap every 5 minutes — no exceptions.",
-            "No external references or internet allowed."
-        ],
-        teamSize: "Exactly 2 members",
-        prizes: "1st: ₹1000",
-        contact: "Podrick Payne",
-        phone: "9876543211",
-        img: "assets/barotheon - Debug Relay.png"
-    },
-    {
-        id: "tech_quiz",
-        title: "Tech Quiz",
-        theme: "Trial by the Eyrie",
-        tagline: "Kahoot-based technical quiz. Only the most informed survive.",
-        desc: "Test your knowledge on the latest tech gossip and hard facts. The little birds have gathered questions from all realms of technology.",
-        rules: [
-            "Individual participation only.",
-            "Laptop is mandatory for the event.",
-            "Fastest correct answer gets more points.",
-            "No smartphones or secondary devices allowed."
-        ],
-        teamSize: "Individual",
-        prizes: "1st: ₹1000",
-        contact: "Little Bird #1",
-        phone: "9876543212",
-        img: "assets/Arryn – Tech Quiz.png"
-    },
-    {
-        id: "ui_design",
-        title: "UI Design",
-        theme: "The Mad King's Canvas",
-        tagline: "Design a wild, creative, and completely frustrating UI. Chaos is a ladder.",
-        desc: "Create the most diabolical, worst possible user experience. The more frustrated the tester, the higher your score. Embrace chaos.",
-        rules: [
-            "Individual participation only.",
-            "Any prior work or templates not allowed.",
-            "Must be functional but deliberately infuriating.",
-            "Design must be submitted as a live prototype."
-        ],
-        teamSize: "Individual",
-        prizes: "1st: ₹1000",
-        contact: "Qyburn",
-        phone: "9876543213",
-        img: "assets/Targaryen - UI Design.png"
-    },
-    {
-        id: "ctf",
-        title: "CTF (Capture the Flag)",
-        theme: "Paying the Iron Price",
-        tagline: "Cybersecurity CTF. Find the hidden flags in images and files.",
-        desc: "Infiltrate the systems and uncover the hidden secrets. Become no one and bypass the security to claim your flags.",
-        rules: [
-            "Solo or teams of 2 only.",
-            "Bring your own laptop — no sharing.",
-            "No DDoS or destructive attacks on the server.",
-            "Do not copy or share flags between teams."
-        ],
-        teamSize: "Solo or 2 members",
-        prizes: "1st: ₹5000",
-        contact: "Jaqen H'ghar",
-        phone: "9876543214",
-        img: "assets/GreyJoy - CTF.png"
-    },
-    {
         id: "shark_tank",
         title: "Shark Tank",
         theme: "The Casterly Rock Pitch",
+        tier: "Tier 1",
         tagline: "Project expo with custom gold/silver coin investments via QR.",
         desc: "Pitch your tech project to the masters of the Iron Bank. Secure investments from attendees using custom QR coins and win the Iron Throne of innovation.",
         rules: [
@@ -111,9 +41,86 @@ const eventsData = [
         img: "assets/Lanyster - Shark tank.png"
     },
     {
+        id: "ctf",
+        title: "CTF (Capture the Flag)",
+        theme: "Paying the Iron Price",
+        tier: "Tier 2",
+        tagline: "Cybersecurity CTF. Find the hidden flags in images and files.",
+        desc: "Infiltrate the systems and uncover the hidden secrets. Become no one and bypass the security to claim your flags.",
+        rules: [
+            "Solo or teams of 2 only.",
+            "Bring your own laptop — no sharing.",
+            "No DDoS or destructive attacks on the server.",
+            "Do not copy or share flags between teams."
+        ],
+        teamSize: "Solo or 2 members",
+        prizes: "1st: ₹5000",
+        contact: "Jaqen H'ghar",
+        phone: "9876543214",
+        img: "assets/GreyJoy - CTF.png"
+    },
+    {
+        id: "debug_relay",
+        title: "Debug Relay",
+        theme: "The Storm's End Relay",
+        tier: "Tier 2",
+        tagline: "15 pairs. Take turns debugging code. 'I drink and I know things.'",
+        desc: "A tag-team coding challenge. One member debugs while the other waits, then swap. Communication and quick thinking are your only allies.",
+        rules: [
+            "Exactly 2 members per team.",
+            "Only one member codes at a time.",
+            "Swap every 5 minutes — no exceptions.",
+            "No external references or internet allowed."
+        ],
+        teamSize: "Exactly 2 members",
+        prizes: "1st: ₹1000",
+        contact: "Podrick Payne",
+        phone: "9876543211",
+        img: "assets/barotheon - Debug Relay.png"
+    },
+    {
+        id: "ui_design",
+        title: "UI Design",
+        theme: "The Mad King's Canvas",
+        tier: "Tier 2",
+        tagline: "Design a wild, creative, and completely frustrating UI. Chaos is a ladder.",
+        desc: "Create the most diabolical, worst possible user experience. The more frustrated the tester, the higher your score. Embrace chaos.",
+        rules: [
+            "Individual participation only.",
+            "Any prior work or templates not allowed.",
+            "Must be functional but deliberately infuriating.",
+            "Design must be submitted as a live prototype."
+        ],
+        teamSize: "Individual",
+        prizes: "1st: ₹1000",
+        contact: "Qyburn",
+        phone: "9876543213",
+        img: "assets/Targaryen - UI Design.png"
+    },
+    {
+        id: "tech_quiz",
+        title: "Tech Quiz",
+        theme: "Trial by the Eyrie",
+        tier: "Tier 2",
+        tagline: "Kahoot-based technical quiz. Only the most informed survive.",
+        desc: "Test your knowledge on the latest tech gossip and hard facts. The little birds have gathered questions from all realms of technology.",
+        rules: [
+            "Individual participation only.",
+            "Laptop is mandatory for the event.",
+            "Fastest correct answer gets more points.",
+            "No smartphones or secondary devices allowed."
+        ],
+        teamSize: "Individual",
+        prizes: "1st: ₹1000",
+        contact: "Little Bird #1",
+        phone: "9876543212",
+        img: "assets/Arryn – Tech Quiz.png"
+    },
+    {
         id: "ai_prompt_battle",
         title: "AI Prompt Battle",
         theme: "The Viper's Strike",
+        tier: "Tier 3",
         tagline: "Look at an image once, then write the prompt to recreate it.",
         desc: "Harness the power of sight. View an AI-generated image for 10 seconds, then craft the exact prompt to recreate it. Precision is power.",
         rules: [
@@ -129,27 +136,10 @@ const eventsData = [
         img: "assets/Martell - AI promt battle.png"
     },
     {
-        id: "down_side_up",
-        title: "Down Side UP",
-        theme: "Beyond the Wall Logic",
-        tagline: "Technical questions, but you must provide the WRONG answers only.",
-        desc: "Deceive and confuse. Answer technical questions with completely wrong but convincing answers. The more absurd yet believable, the better.",
-        rules: [
-            "Pairs only.",
-            "Hesitation for more than 5 seconds leads to elimination.",
-            "Correct answers will get you instantly disqualified.",
-            "Answers must be tech-related — no random gibberish."
-        ],
-        teamSize: "Exactly 2 members",
-        prizes: "1st: ₹2000",
-        contact: "Sansa Stark",
-        phone: "9876543217",
-        img: "assets/Giantsbane – Down Side UP.png"
-    },
-    {
         id: "techdumb_pictionary",
         title: "TechDumb Pictionary",
         theme: "The Riverrun Riddles",
+        tier: "Tier 3",
         tagline: "Rapid-fire picture connection to guess technical words.",
         desc: "You know nothing! Guess the technical term by connecting completely unrelated, dumb pictures drawn by your teammate.",
         rules: [
@@ -165,9 +155,29 @@ const eventsData = [
         img: "assets/Tully – TechDumb Pictionary.png"
     },
     {
+        id: "down_side_up",
+        title: "Down Side UP",
+        theme: "Beyond the Wall Logic",
+        tier: "Tier 3",
+        tagline: "Technical questions, but you must provide the WRONG answers only.",
+        desc: "Deceive and confuse. Answer technical questions with completely wrong but convincing answers. The more absurd yet believable, the better.",
+        rules: [
+            "Pairs only.",
+            "Hesitation for more than 5 seconds leads to elimination.",
+            "Correct answers will get you instantly disqualified.",
+            "Answers must be tech-related — no random gibberish."
+        ],
+        teamSize: "Exactly 2 members",
+        prizes: "1st: ₹2000",
+        contact: "Sansa Stark",
+        phone: "9876543217",
+        img: "assets/Giantsbane – Down Side UP.png"
+    },
+    {
         id: "binary_charades",
         title: "Binary Charades",
         theme: "The Silent Wolf",
+        tier: "Tier 3",
         tagline: "Act out technical terms without speaking. Hold the door!",
         desc: "No words allowed. Only actions. Act out complex technical architectures and terms while your partner decodes your silent performance.",
         rules: [
@@ -244,8 +254,13 @@ function renderCards() {
         card.className = 'event-card';
         card.dataset.id = event.id;
         
+        let tierClass = "tier-1";
+        if (event.tier === "Tier 2") tierClass = "tier-2";
+        else if (event.tier === "Tier 3") tierClass = "tier-3";
+        
         card.innerHTML = `
             <img src="${event.img}" alt="${event.title}" class="card-bg">
+            <div class="tier-badge ${tierClass}">${event.tier}</div>
             <div class="card-content">
                 <div class="card-theme">${event.theme}</div>
                 <h3 class="card-title">${event.title}</h3>
