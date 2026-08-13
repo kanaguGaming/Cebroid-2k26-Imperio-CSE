@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="styles.css">
+    <!-- Three.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
     <!-- Splash Screen -->
@@ -22,7 +24,7 @@
     </div>
 
     <!-- Background -->
-    <div class="dragon-background"></div>
+    <canvas id="bg-canvas"></canvas>
     <div class="background-overlay"></div>
 
     <!-- Navigation -->
@@ -36,6 +38,7 @@
         <ul class="nav-links" id="nav-links">
             <li><a href="#home">Home</a></li>
             <li><a href="#events">Events</a></li>
+            <li><a href="#agenda">Agenda</a></li>
             <li><a href="#register">Register</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -44,15 +47,96 @@
     <!-- Main Content -->
     <main>
         <section id="home" class="hero">
-            <p class="hero-subtitle">Imperio CSE Proudly Presents,</p>
-            <h1 class="hero-title">CEBROID 2K26</h1>
-            <p class="hero-subtitle">The GOAT-ed Event Of ACET</p>
+            <img src="assets/Title.png" alt="Cebroid 2k26 Title" class="hero-title-img">
         </section>
 
         <section id="events" class="events-section">
             <h2 class="section-title">The Battles to Come</h2>
             <div class="events-grid" id="events-grid">
                 <!-- Cards injected via JS -->
+            </div>
+        </section>
+
+        <section id="agenda" class="agenda-section">
+            <h2 class="section-title">Agenda</h2>
+            <div class="agenda-container" id="agenda-container">
+                <div class="agenda-card stroke-yellow">
+                    <div class="agenda-title"><i class="fas fa-ribbon"></i> Inauguration</div>
+                    <div class="agenda-details">
+                        <div class="agenda-detail-item"><i class="fas fa-map-marker-alt"></i> Seminar Hall</div>
+                        <div class="agenda-detail-item"><i class="fas fa-clock"></i> 09:00 AM - 09:30 AM</div>
+                    </div>
+                </div>
+                <div class="agenda-card stroke-yellow">
+                    <div class="agenda-title"><i class="fas fa-file-alt"></i> Paper Presentation</div>
+                    <div class="agenda-details">
+                        <div class="agenda-detail-item"><i class="fas fa-map-marker-alt"></i> Sem Hall & Proj Hall</div>
+                        <div class="agenda-detail-item"><i class="fas fa-clock"></i> 09:45 AM - 12:45 PM</div>
+                    </div>
+                </div>
+                <div class="agenda-card stroke-orange">
+                    <div class="agenda-title"><i class="fas fa-bug"></i> Debug Relay</div>
+                    <div class="agenda-details">
+                        <div class="agenda-detail-item"><i class="fas fa-map-marker-alt"></i> Lab 1</div>
+                        <div class="agenda-detail-item"><i class="fas fa-clock"></i> 09:45 AM - 10:45 AM</div>
+                    </div>
+                </div>
+                <div class="agenda-card stroke-blue">
+                    <div class="agenda-title"><i class="fas fa-brain"></i> Tech Quiz</div>
+                    <div class="agenda-details">
+                        <div class="agenda-detail-item"><i class="fas fa-map-marker-alt"></i> Classroom 1</div>
+                        <div class="agenda-detail-item"><i class="fas fa-clock"></i> 09:45 AM - 10:45 AM</div>
+                    </div>
+                </div>
+                <div class="agenda-card stroke-orange">
+                    <div class="agenda-title"><i class="fas fa-paint-brush"></i> UI Design</div>
+                    <div class="agenda-details">
+                        <div class="agenda-detail-item"><i class="fas fa-map-marker-alt"></i> Lab 1</div>
+                        <div class="agenda-detail-item"><i class="fas fa-clock"></i> 11:00 AM - 12:30 PM</div>
+                    </div>
+                </div>
+                <div class="agenda-card stroke-blue">
+                    <div class="agenda-title"><i class="fas fa-gamepad"></i> Down Side UP</div>
+                    <div class="agenda-details">
+                        <div class="agenda-detail-item"><i class="fas fa-map-marker-alt"></i> Classroom 1</div>
+                        <div class="agenda-detail-item"><i class="fas fa-clock"></i> 11:00 AM - 12:00 PM</div>
+                    </div>
+                </div>
+                <div class="agenda-card stroke-blue">
+                    <div class="agenda-title"><i class="fas fa-comments-dollar"></i> Shark Tank</div>
+                    <div class="agenda-details">
+                        <div class="agenda-detail-item"><i class="fas fa-map-marker-alt"></i> Classroom 2 & 3</div>
+                        <div class="agenda-detail-item"><i class="fas fa-clock"></i> 01:30 PM - 04:00 PM</div>
+                    </div>
+                </div>
+                <div class="agenda-card stroke-orange">
+                    <div class="agenda-title"><i class="fas fa-flag-checkered"></i> CTF</div>
+                    <div class="agenda-details">
+                        <div class="agenda-detail-item"><i class="fas fa-map-marker-alt"></i> Lab 1</div>
+                        <div class="agenda-detail-item"><i class="fas fa-clock"></i> 01:30 PM - 03:30 PM</div>
+                    </div>
+                </div>
+                <div class="agenda-card stroke-blue">
+                    <div class="agenda-title"><i class="fas fa-pencil-alt"></i> TechDumb Pictionary</div>
+                    <div class="agenda-details">
+                        <div class="agenda-detail-item"><i class="fas fa-map-marker-alt"></i> Classroom 1</div>
+                        <div class="agenda-detail-item"><i class="fas fa-clock"></i> 01:30 PM - 02:30 PM</div>
+                    </div>
+                </div>
+                <div class="agenda-card stroke-blue">
+                    <div class="agenda-title"><i class="fas fa-theater-masks"></i> Binary Charades</div>
+                    <div class="agenda-details">
+                        <div class="agenda-detail-item"><i class="fas fa-map-marker-alt"></i> Classroom 1</div>
+                        <div class="agenda-detail-item"><i class="fas fa-clock"></i> 02:45 PM - 03:45 PM</div>
+                    </div>
+                </div>
+                <div class="agenda-card stroke-yellow">
+                    <div class="agenda-title"><i class="fas fa-award"></i> Closing Ceremony</div>
+                    <div class="agenda-details">
+                        <div class="agenda-detail-item"><i class="fas fa-map-marker-alt"></i> Seminar Hall</div>
+                        <div class="agenda-detail-item"><i class="fas fa-clock"></i> 04:00 PM - 04:30 PM</div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -282,7 +366,7 @@
 
                         <div class="form-actions">
                             <button type="button" class="text-btn" id="back-to-step1"><i class="fas fa-arrow-left"></i> Back</button>
-                            <button class="register-banner-btn" class="cta-button submit-btn" id="reg-submit-btn">
+                            <button type="submit" class="cta-button submit-btn" id="reg-submit-btn">
                                 Submit Registration <i class="fas fa-paper-plane"></i>
                             </button>
                         </div>
@@ -314,7 +398,7 @@
             <div class="coordinator-card">
                 <div class="coord-info">
                     <span class="coord-name">Harisha V</span>
-                    <span class="coord-role">Event Head Coordinator</span>
+                    <span class="coord-role">Event Head</span>
                 </div>
                 <div class="coord-icons">
                     <a href="https://mail.google.com/mail/u/0/#inbox?compose=CllgCJlHmbDmPSjQbXlqdDrKTJTfVXLMKHVsMltZxhHKcfwmmTFcdldNXRSBqlKxhDgRBBSBjJq" class="coord-icon-btn" title="Email"><i class="fas fa-envelope"></i></a>
@@ -336,6 +420,7 @@
             </div>
         </div>
         <p>&copy; 2026 Cebroid Technical Symposium.</p>
+        <p>Designed & Developed By Mr KG.</p>
         <p>Department of CSE - IMPERIO CSE.</p>
         <p>Adhi College Of Engineering & technology.</p>
     </footer>
@@ -409,8 +494,8 @@
 
     <!-- Scroll Down Hint Toast -->
     <div id="scroll-down-hint">
-        <i class="fas fa-chevron-down"></i>
-        <span>Scroll down to explore events</span>
+        <i class="fas fa-chevron-up"></i>
+        <span>Scroll up</span>
     </div>
 
     <!-- GSAP & Flip Plugin -->

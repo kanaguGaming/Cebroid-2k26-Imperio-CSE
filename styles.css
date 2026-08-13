@@ -52,17 +52,15 @@ h1, h2, h3, h4, .nav-logo {
     height: auto;
 }
 
-/* Dragon Background */
-.dragon-background {
+/* WebGL Dragon Background */
+#bg-canvas {
     position: fixed;
-    top: -10%;
-    left: -10%;
-    width: 120vw;
-    height: 120vh;
-    background: url('assets/dragon_scales.png') repeat;
-    background-size: 500px; /* Scale of the dragon scales */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
     z-index: -2;
-    /* We handle movement via JS for interactive scroll and mouse movement */
+    pointer-events: none;
 }
 
 .background-overlay {
@@ -138,21 +136,12 @@ h1, h2, h3, h4, .nav-logo {
     padding: 0 20px;
 }
 
-.hero-title {
-    font-size: 4rem;
-    margin-bottom: 15px;
-    text-shadow: 0 10px 20px rgba(0,0,0,0.9);
-    background: linear-gradient(45deg, #ffffff, #888888);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 5px;
-}
-
-.hero-subtitle {
-    font-size: 0.95rem;
-    color: #bbb;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+.hero-title-img {
+    max-width: 90%;
+    width: 600px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
 }
 
 /* Events Section */
@@ -276,6 +265,84 @@ h1, h2, h3, h4, .nav-logo {
     font-size: 0.95rem;
     color: #ccc;
     line-height: 1.5;
+}
+
+/* =====================================================================
+   AGENDA SECTION
+   ===================================================================== */
+.agenda-section {
+    padding: 80px 50px 100px;
+    min-height: auto;
+}
+
+.agenda-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.agenda-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 20px 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.agenda-card:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+}
+
+.agenda-card.stroke-yellow { border-left: 5px solid #f1c40f; }
+.agenda-card.stroke-orange { border-left: 5px solid var(--primary-glow); }
+.agenda-card.stroke-blue { border-left: 5px solid #3498db; }
+
+.agenda-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.agenda-title i {
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+.agenda-card.stroke-yellow .agenda-title i { color: #f1c40f; }
+.agenda-card.stroke-orange .agenda-title i { color: var(--primary-glow); }
+.agenda-card.stroke-blue .agenda-title i { color: #3498db; }
+
+.agenda-details {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    color: #ccc;
+    font-size: 0.95rem;
+    margin-left: 36px;
+}
+
+.agenda-detail-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.agenda-detail-item i {
+    width: 16px;
+    text-align: center;
+    opacity: 0.7;
 }
 
 /* =====================================================================
@@ -1582,17 +1649,17 @@ a.cta-button {
 
 #scroll-down-hint i {
     color: var(--primary-glow);
-    animation: bounceDown 1.2s ease infinite;
+    animation: bounceUp 1.2s ease infinite;
 }
 
-@keyframes bounceDown {
+@keyframes bounceUp {
     0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(5px); }
+    50% { transform: translateY(-5px); }
 }
 
 /* Responsive */
 @media (max-width: 900px) {
-    .hero-title { font-size: 3rem; }
+    .hero-title-img { max-width: 95%; width: 450px; }
     .overlay-content { padding: 40px; width: 95%; }
 }
 
