@@ -146,6 +146,22 @@ h1, h2, h3, h4, .nav-logo {
     filter: drop-shadow(0 10px 20px rgba(0,0,0,0.9));
 }
 
+/* Date Section */
+.date-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.date-img {
+    max-width: 90%;
+    width: 400px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
+}
+
 /* Events Section */
 .events-section {
     padding: 100px 50px;
