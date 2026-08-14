@@ -16,9 +16,9 @@ const eventsData = [
             "Presentation must be in English."
         ],
         teamSize: "Up to 4 members",
-        prizes: "1st: ₹2000 | 2nd: ₹1000",
-        contact: "Maester Aemon",
-        phone: "9876543210",
+        prizes: "1st: ₹1500 | 2nd: ₹1000",
+        contact: "Kanaga Prasath B",
+        phone: "+91 8940293794",
         img: "assets/Tyrell – Paper Presentation.png"
     },
     {
@@ -35,9 +35,9 @@ const eventsData = [
             "Q&A session of 3 minutes follows each pitch."
         ],
         teamSize: "Up to 4 members",
-        prizes: "Most Invested: ₹10000",
-        contact: "Kevan Lannister",
-        phone: "9876543215",
+        prizes: "1st: ₹1500 | 2nd: ₹1000",
+        contact: "Pradeeshwar S",
+        phone: "+91 84894 04344",
         img: "assets/Lanyster - Shark tank.png"
     },
     {
@@ -54,9 +54,9 @@ const eventsData = [
             "Do not copy or share flags between teams."
         ],
         teamSize: "Solo or 2 members",
-        prizes: "1st: ₹5000",
-        contact: "Jaqen H'ghar",
-        phone: "9876543214",
+        prizes: "1st: ₹1000",
+        contact: "Harish Kumar",
+        phone: "+91 95004 62134",
         img: "assets/GreyJoy - CTF.png"
     },
     {
@@ -74,8 +74,8 @@ const eventsData = [
         ],
         teamSize: "Exactly 2 members",
         prizes: "1st: ₹1000",
-        contact: "Podrick Payne",
-        phone: "9876543211",
+        contact: "Harisha V",
+        phone: "+91 93426 27765",
         img: "assets/barotheon - Debug Relay.png"
     },
     {
@@ -93,8 +93,8 @@ const eventsData = [
         ],
         teamSize: "Individual",
         prizes: "1st: ₹1000",
-        contact: "Qyburn",
-        phone: "9876543213",
+        contact: "Narendhar D S",
+        phone: "+91 99400 42140",
         img: "assets/Targaryen - UI Design.png"
     },
     {
@@ -112,8 +112,8 @@ const eventsData = [
         ],
         teamSize: "Individual",
         prizes: "1st: ₹1000",
-        contact: "Little Bird #1",
-        phone: "9876543212",
+        contact: "Harish Kumar",
+        phone: "+91 95004 62134",
         img: "assets/Arryn – Tech Quiz.png"
     },
     {
@@ -130,9 +130,9 @@ const eventsData = [
             "Prompts must be typed, not dictated."
         ],
         teamSize: "Individual",
-        prizes: "1st: ₹2000",
-        contact: "Meera Reed",
-        phone: "9876543216",
+        prizes: "1st: ₹500",
+        contact: "Narendhar D S",
+        phone: "+91 99400 42140",
         img: "assets/Martell - AI promt battle.png"
     },
     {
@@ -149,9 +149,9 @@ const eventsData = [
             "Scoring is time-based."
         ],
         teamSize: "Exactly 2 members",
-        prizes: "1st: ₹2000",
-        contact: "Samwell",
-        phone: "9876543218",
+        prizes: "1st: ₹500",
+        contact: "Ponvelan",
+        phone: "+91 81484 37075",
         img: "assets/Tully – TechDumb Pictionary.png"
     },
     {
@@ -168,9 +168,9 @@ const eventsData = [
             "Answers must be tech-related — no random gibberish."
         ],
         teamSize: "Exactly 2 members",
-        prizes: "1st: ₹2000",
-        contact: "Sansa Stark",
-        phone: "9876543217",
+        prizes: "1st: ₹500",
+        contact: "Yogesh",
+        phone: "+91 96007 01636",
         img: "assets/Giantsbane – Down Side UP.png"
     },
     {
@@ -187,9 +187,9 @@ const eventsData = [
             "Each round is strictly time-limited."
         ],
         teamSize: "Exactly 2 members",
-        prizes: "1st: ₹2000",
-        contact: "Bran",
-        phone: "9876543219",
+        prizes: "1st: ₹500",
+        contact: "Andrew David",
+        phone: "+91 93635 97327",
         img: "assets/Stark - Binary Charades.png"
     }
 ];
