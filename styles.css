@@ -59,7 +59,7 @@ h1, h2, h3, h4, .nav-logo {
     left: -10%;
     width: 120vw;
     height: 120vh;
-    background: url('assets/dragon_scales.png') repeat;
+    background: url('assets/dragon_scale.jpeg') repeat;
     background-size: 500px; /* Scale of the dragon scales */
     z-index: -2;
     /* We handle movement via JS for interactive scroll and mouse movement */
