@@ -860,3 +860,100 @@ scrollHint.addEventListener('click', () => {
     hideScrollHint();
     window.scrollTo({ top: document.getElementById('events').offsetTop, behavior: 'smooth' });
 });
+
+/* ═══════════════════════════════════════════════════════════════
+   COUNTDOWN CLOCKS
+   ═══════════════════════════════════════════════════════════════ */
+(function initCountdowns() {
+    // Target dates (IST = UTC+5:30)
+    // Event: 28 August 2026, 09:00 AM IST
+    const EVENT_DATE = new Date('2026-08-28T09:00:00+05:30');
+    // Registration close: 26 August 2026, 11:59 PM IST
+    const REG_CLOSE_DATE = new Date('2026-08-26T23:59:59+05:30');
+
+    /**
+     * Pads a number to 2 digits.
+     */
+    function pad(n) { return String(Math.max(0, n)).padStart(2, '0'); }
+
+    /**
+     * Updates a single countdown-num element with flip animation if the value changed.
+     */
+    function setNum(el, val) {
+        const v = pad(val);
+        if (el && el.textContent !== v) {
+            el.classList.remove('flip-anim');
+            // Force reflow to restart animation
+            void el.offsetWidth;
+            el.textContent = v;
+            el.classList.add('flip-anim');
+        }
+    }
+
+    /**
+     * Calculates remaining time from now to targetDate.
+     * Returns { days, hours, minutes, seconds, expired }
+     */
+    function getRemaining(targetDate) {
+        const diff = targetDate - Date.now();
+        if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0, expired: true };
+        const totalSeconds = Math.floor(diff / 1000);
+        const days    = Math.floor(totalSeconds / 86400);
+        const hours   = Math.floor((totalSeconds % 86400) / 3600);
+        const minutes = Math.floor((totalSeconds % 3600) / 60);
+        const seconds = totalSeconds % 60;
+        return { days, hours, minutes, seconds, expired: false };
+    }
+
+    // ── Event Countdown elements ─────────────────────────────────
+    const evtD = document.getElementById('evt-d');
+    const evtH = document.getElementById('evt-h');
+    const evtM = document.getElementById('evt-m');
+    const evtS = document.getElementById('evt-s');
+    const evtStrip = document.getElementById('event-countdown');
+    const evtWrapper = document.getElementById('event-countdown-wrapper');
+
+    // ── Registration Countdown elements ──────────────────────────
+    const regD = document.getElementById('reg-d');
+    const regH = document.getElementById('reg-h');
+    const regM = document.getElementById('reg-m');
+    const regS = document.getElementById('reg-s');
+    const regStrip = document.getElementById('reg-countdown');
+    const regSection = document.getElementById('reg-countdown-section');
+
+    function showExpired(stripEl, wrapperEl, message) {
+        if (!stripEl) return;
+        stripEl.innerHTML = `<span class="countdown-expired-msg">${message}</span>`;
+    }
+
+    function tick() {
+        // — Event countdown —
+        const evt = getRemaining(EVENT_DATE);
+        if (evt.expired) {
+            showExpired(evtStrip, evtWrapper, '🔥 The Dragon Has Awakened 🔥');
+        } else {
+            setNum(evtD, evt.days);
+            setNum(evtH, evt.hours);
+            setNum(evtM, evt.minutes);
+            setNum(evtS, evt.seconds);
+        }
+
+        // — Registration countdown —
+        const reg = getRemaining(REG_CLOSE_DATE);
+        if (reg.expired) {
+            showExpired(regStrip, regSection, '⚔️ The Gates Are Shut — Registration Closed ⚔️');
+            // Optionally hide the CTA button too
+            const cta = document.querySelector('.reg-countdown-cta');
+            if (cta) cta.style.display = 'none';
+        } else {
+            setNum(regD, reg.days);
+            setNum(regH, reg.hours);
+            setNum(regM, reg.minutes);
+            setNum(regS, reg.seconds);
+        }
+    }
+
+    // Run immediately then every second
+    tick();
+    setInterval(tick, 1000);
+})();
