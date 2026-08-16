@@ -575,7 +575,7 @@ function showStep2Error(msg) {
 
 // ── Form Submission ───────────────────────────────────────────────────
 
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx1BsgrVUUeSSilE-ct5LztL0NKD9yz8l6KQbL_m72R9Vh9Zh-wzElfW7xdUnnzNQxO/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyL6wTyh9BibGJEaftC3K_E4wlec3JijPohalV-boUod3q_Gs-8BHzFrbqxipEA-g7L/exec";
 
 individualRegForm.addEventListener('submit', async (e) => {
     e.preventDefault();
