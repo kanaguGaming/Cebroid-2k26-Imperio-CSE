@@ -26,15 +26,16 @@
  * D Email
  * E College / Institution
  * F Events Selected
- * G Registration Fee
- * H Payment Screenshot
- * I Ticket Number
- * J Verification Status
- * K Pass Sent
- * L OD Generated
- * M Email Status
- * N Email Sent At
- * O Error Log
+ * G Food Preference
+ * H Registration Fee
+ * I Payment Screenshot
+ * J Ticket Number
+ * K Verification Status
+ * L Pass Sent
+ * M OD Generated
+ * N Email Status
+ * O Email Sent At
+ * P Error Log
  * ================================================================
  */
 
@@ -101,15 +102,16 @@ const COL = {
   EMAIL: 4,
   COLLEGE: 5,
   EVENTS: 6,
-  FEE: 7,
-  SCREENSHOT: 8,
-  TICKET: 9,
-  VERIFICATION: 10,
-  PASS_SENT: 11,
-  OD_GENERATED: 12,
-  EMAIL_STATUS: 13,
-  EMAIL_SENT_AT: 14,
-  ERROR_LOG: 15
+  FOOD: 7,
+  FEE: 8,
+  SCREENSHOT: 9,
+  TICKET: 10,
+  VERIFICATION: 11,
+  PASS_SENT: 12,
+  OD_GENERATED: 13,
+  EMAIL_STATUS: 14,
+  EMAIL_SENT_AT: 15,
+  ERROR_LOG: 16
 };
 
 
@@ -181,6 +183,7 @@ function doPost(e) {
     const email = String(data.email).trim();
     const college = String(data.college).trim();
     const events = String(data.events).trim();
+    const food = data.food ? String(data.food).trim() : "Not specified";
 
     const fee = data.fee
       ? String(data.fee).trim()
@@ -277,15 +280,16 @@ function doPost(e) {
       email,                  // D Email
       college,                // E College
       events,                 // F Events
-      fee,                    // G Fee
-      screenshotLink,         // H Screenshot
-      ticketNumber,           // I Ticket
-      "Pending",              // J Verification
-      "No",                   // K Pass Sent
-      "No",                   // L OD Generated
-      "Not Sent",             // M Email Status
-      "",                     // N Email Sent At
-      ""                      // O Error Log
+      food,                   // G Food Preference
+      fee,                    // H Fee
+      screenshotLink,         // I Screenshot
+      ticketNumber,           // J Ticket
+      "Pending",              // K Verification
+      "No",                   // L Pass Sent
+      "No",                   // M OD Generated
+      "Not Sent",             // N Email Status
+      "",                     // O Email Sent At
+      ""                      // P Error Log
 
     ];
 
@@ -726,6 +730,11 @@ function getParticipantData(sheet, row) {
     events:
       String(
         data[COL.EVENTS - 1] || ""
+      ).trim(),
+
+    food:
+      String(
+        data[COL.FOOD - 1] || "Not specified"
       ).trim(),
 
     fee:
@@ -1773,6 +1782,12 @@ Your official Entry Pass and OD / Participation Letter are attached to this emai
 
 Please present your QR code at the registration/check-in desk on the event day.
 
+Event Day Instructions
+-----------------------
+• Participants are requested to appear in formal attire. Shoes are not mandatory.
+• Appear before 8:30 AM at the venue.
+• You must show this QR code to the reception team at the entrance.
+
 Regards,
 ${CONFIG.ORGANIZATION}
 ${CONFIG.DEPARTMENT}
@@ -2165,6 +2180,39 @@ body {
   Please verify your name, institution, events and
   ticket number before the event. Do not share your
   QR code or entry pass with another participant.
+
+  <br><br>
+
+  <strong>Event Day Instructions:</strong>
+
+  <br><br>
+
+  &#8226; Participants are requested to appear in
+  <strong>formal attire</strong>. Shoes are not mandatory.
+
+  <br><br>
+
+  &#8226; Appear before <strong>8:30 AM</strong> at the venue.
+
+  <br><br>
+
+  &#8226; You must show this <strong>QR code</strong> to the
+  reception team at the entrance.
+  
+  <br><br>
+
+  &#8226; Participants can contact 
+  <strong>
+    <a +91 89402 93794 - Kanaga Prsath B - Chief Student Coordinator
+    </a>
+    <a +91 95859 73729 - Mrs Dhanalakshmi - Faculty Coordinator
+    </a>
+    <a +91 84894 04344 - Pradeeshwar S - Student Coordinator
+    </a>
+    <a +91 99400 42140 - Narendhar D S - Student Coordinator
+    </a>
+  </strong>
+  <strong>formal attire</strong>. Shoes are not mandatory.
 
 </div>
 
@@ -2735,4 +2783,4 @@ function testParticipantDocuments() {
     TEST_ROW
   );
 
-}
+} 

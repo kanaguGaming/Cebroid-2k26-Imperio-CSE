@@ -2710,3 +2710,85 @@ a.cta-button {
         padding: 9px 14px;
     }
 }
+
+/* ── Food Preference Dropdown ── */
+.food-preference-group {
+    margin-top: 18px;
+}
+
+.food-select {
+    width: 100%;
+    padding: 12px 16px;
+    margin-top: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    color: var(--text-light);
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23e65c00' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.food-select:focus {
+    outline: none;
+    border-color: var(--primary-glow);
+    box-shadow: 0 0 0 3px rgba(230, 92, 0, 0.18);
+    background-color: rgba(230, 92, 0, 0.07);
+}
+
+.food-select option {
+    background: #1a1a1a;
+    color: var(--text-light);
+    font-size: 0.95rem;
+}
+
+.food-select option[value="Veg"] {
+    color: #7dde82;
+}
+
+.food-select option[value="Non-Veg"] {
+    color: #ff8c42;
+}
+
+/* ── Event Notice Banner ── */
+.event-notice {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 4px;
+    padding: 12px 18px;
+    background: linear-gradient(135deg, rgba(230, 92, 0, 0.12), rgba(153, 0, 0, 0.15));
+    border: 1px solid rgba(230, 92, 0, 0.45);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    color: #ffb380;
+    font-style: italic;
+    letter-spacing: 0.3px;
+    animation: noticePulse 3s ease-in-out infinite;
+}
+
+.event-notice i {
+    color: #e65c00;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.event-notice strong {
+    color: #ff6a1a;
+    font-style: normal;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+@keyframes noticePulse {
+    0%, 100% { border-color: rgba(230, 92, 0, 0.45); box-shadow: none; }
+    50% { border-color: rgba(230, 92, 0, 0.8); box-shadow: 0 0 12px rgba(230, 92, 0, 0.25); }
+}

@@ -396,12 +396,27 @@
                             </div>
                         </div>
 
+                        <!-- Food Preference Dropdown -->
+                        <div class="form-group food-preference-group">
+                            <label for="reg-food"><i class="fas fa-utensils"></i> Food Preference <span class="required-star">*</span></label>
+                            <select id="reg-food" name="food" class="food-select">
+                                <option value="" disabled selected>-- Select food preference --</option>
+                                <option value="Veg">🥦 Veg</option>
+                                <option value="Non-Veg">🍗 Non-Veg</option>
+                            </select>
+                        </div>
+
+                        <!-- Event Notice -->
+                        <div class="event-notice">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            <span>Event is on <strong>Friday</strong>, plan accordingly, this is final.</span>
+                        </div>
+
                         <div class="form-actions">
                             <button type="button" class="text-btn" id="reset-reg-form">Clear</button>
                             <button class="register-banner-btn" class="cta-button submit-btn" id="proceed-to-payment">
                                 Proceed to Payment <i class="fas fa-arrow-right"></i>
                             </button>
-                            
                         </div>
                         <div id="step1-error" class="step-error hidden"></div>
                     </div>

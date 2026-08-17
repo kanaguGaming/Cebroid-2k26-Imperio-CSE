@@ -483,6 +483,8 @@ proceedBtn.addEventListener('click', () => {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showStep1Error('Please enter a valid email address.');
     if (!college) return showStep1Error('Please enter your college / institution name.');
     if (selectedEvents.length === 0) return showStep1Error('Please select at least one event to attend.');
+    const food = document.getElementById('reg-food').value;
+    if (!food) return showStep1Error('Please select your food preference (Veg / Non-Veg).');
 
     // All good — build summary and go to step 2
     step1Error.classList.add('hidden');
@@ -507,6 +509,9 @@ backBtn.addEventListener('click', () => showStep(1));
 
 // Clear button (Step 1)
 document.getElementById('reset-reg-form').addEventListener('click', resetFormToStep1);
+
+// ── Food Preference Dropdown ──────────────────────────────────────────
+// No JS needed — native <select> handles state automatically.
 
 // ── File Upload ───────────────────────────────────────────────────────
 
@@ -606,6 +611,7 @@ individualRegForm.addEventListener('submit', async (e) => {
             email: document.getElementById('reg-email').value.trim(),
             college: document.getElementById('reg-college').value.trim(),
             events: selectedEvents.join(', '),
+            food: document.getElementById('reg-food').value,
             fee: '₹200',
             transactionId: txnId,
             screenshotBase64: ev.target.result,      // full DataURL e.g. "data:image/png;base64,..."
