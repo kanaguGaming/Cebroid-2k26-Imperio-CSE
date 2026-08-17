@@ -28,24 +28,23 @@
  * F Events Selected
  * G Food Preference
  * H Registration Fee
- * I Payment Screenshot
- * J Ticket Number
- * K Verification Status
- * L Pass Sent
- * M OD Generated
- * N Email Status
- * O Email Sent At
- * P Error Log
+ * I Transaction ID
+ * J Payment Screenshot
+ * K Ticket Number
+ * L Verification Status
+ * M Pass Sent
+ * N OD Generated
+ * O Email Status
+ * P Email Sent At
+ * Q Error Log
  * ================================================================
  */
-
 
 // ================================================================
 // CONFIGURATION
 // ================================================================
 
 const CONFIG = {
-
   // Existing Google Drive folder for payment screenshots
   DRIVE_FOLDER_ID: "1_PcKWU2oJtIXBNGwOTYqhnD7JGsNcUDH",
 
@@ -87,9 +86,8 @@ const CONFIG = {
 
   // PDF filenames
   ENTRY_PASS_PREFIX: "Cebroid_Entry_Pass_",
-  OD_LETTER_PREFIX: "Cebroid_OD_Letter_"
+  OD_LETTER_PREFIX: "Cebroid_OD_Letter_",
 };
-
 
 // ================================================================
 // SHEET COLUMN DEFINITIONS
@@ -111,27 +109,21 @@ const COL = {
   OD_GENERATED: 13,
   EMAIL_STATUS: 14,
   EMAIL_SENT_AT: 15,
-  ERROR_LOG: 16
+  ERROR_LOG: 16,
 };
-
 
 // ================================================================
 // POST API
 // ================================================================
 
 function doPost(e) {
-
   try {
-
     // ------------------------------------------------------------
     // Validate request
     // ------------------------------------------------------------
 
     if (!e || !e.postData || !e.postData.contents) {
-      return jsonResponse(
-        "error",
-        "No POST data received."
-      );
+      return jsonResponse("error", "No POST data received.");
     }
 
     let data;
@@ -139,40 +131,25 @@ function doPost(e) {
     try {
       data = JSON.parse(e.postData.contents);
     } catch (error) {
-      return jsonResponse(
-        "error",
-        "Invalid JSON format."
-      );
+      return jsonResponse("error", "Invalid JSON format.");
     }
-
 
     // ------------------------------------------------------------
     // Validate required fields
     // ------------------------------------------------------------
 
-    const requiredFields = [
-      "name",
-      "phone",
-      "email",
-      "college",
-      "events"
-    ];
+    const requiredFields = ["name", "phone", "email", "college", "events"];
 
-    const missingFields = requiredFields.filter(function(field) {
-      return !data[field] ||
-             String(data[field]).trim() === "";
+    const missingFields = requiredFields.filter(function (field) {
+      return !data[field] || String(data[field]).trim() === "";
     });
 
     if (missingFields.length > 0) {
-
       return jsonResponse(
         "error",
-        "Missing required fields: " +
-        missingFields.join(", ")
+        "Missing required fields: " + missingFields.join(", "),
       );
-
     }
-
 
     // ------------------------------------------------------------
     // Clean user input
@@ -185,24 +162,15 @@ function doPost(e) {
     const events = String(data.events).trim();
     const food = data.food ? String(data.food).trim() : "Not specified";
 
-    const fee = data.fee
-      ? String(data.fee).trim()
-      : CONFIG.DEFAULT_FEE;
-
+    const fee = data.fee ? String(data.fee).trim() : CONFIG.DEFAULT_FEE;
 
     // ------------------------------------------------------------
     // Validate email
     // ------------------------------------------------------------
 
     if (!isValidEmail(email)) {
-
-      return jsonResponse(
-        "error",
-        "Invalid email address."
-      );
-
+      return jsonResponse("error", "Invalid email address.");
     }
-
 
     // ------------------------------------------------------------
     // Open spreadsheet
@@ -213,17 +181,12 @@ function doPost(e) {
     let sheet = ss.getSheetByName(CONFIG.SHEET_NAME);
 
     if (!sheet) {
-
       sheet = ss.insertSheet(CONFIG.SHEET_NAME);
 
       initializeSheet(sheet);
-
     } else {
-
       ensureColumns(sheet);
-
     }
-
 
     // ------------------------------------------------------------
     // Upload payment screenshot
@@ -235,31 +198,19 @@ function doPost(e) {
       data.screenshotBase64 &&
       String(data.screenshotBase64).startsWith("data:")
     ) {
-
       try {
-
         screenshotLink = uploadToDrive(
           data.screenshotBase64,
           data.screenshotName || "payment_screenshot.png",
           name,
-          phone
+          phone,
         );
-
       } catch (error) {
+        Logger.log("Drive upload error: " + error.message);
 
-        Logger.log(
-          "Drive upload error: " +
-          error.message
-        );
-
-        screenshotLink =
-          "Upload failed: " +
-          error.message;
-
+        screenshotLink = "Upload failed: " + error.message;
       }
-
     }
-
 
     // ------------------------------------------------------------
     // Generate unique ticket number
@@ -267,35 +218,30 @@ function doPost(e) {
 
     const ticketNumber = generateTicketNumber(sheet);
 
-
     // ------------------------------------------------------------
     // Add registration row
     // ------------------------------------------------------------
 
     const rowData = [
-
-      new Date(),             // A Timestamp
-      name,                   // B Name
-      phone,                  // C Phone
-      email,                  // D Email
-      college,                // E College
-      events,                 // F Events
-      food,                   // G Food Preference
-      fee,                    // H Fee
-      screenshotLink,         // I Screenshot
-      ticketNumber,           // J Ticket
-      "Pending",              // K Verification
-      "No",                   // L Pass Sent
-      "No",                   // M OD Generated
-      "Not Sent",             // N Email Status
-      "",                     // O Email Sent At
-      ""                      // P Error Log
-
+      new Date(), // A Timestamp
+      name, // B Name
+      phone, // C Phone
+      email, // D Email
+      college, // E College
+      events, // F Events
+      food, // G Food Preference
+      fee, // H Fee
+      screenshotLink, // I Screenshot
+      ticketNumber, // J Ticket
+      "Pending", // K Verification
+      "No", // L Pass Sent
+      "No", // M OD Generated
+      "Not Sent", // N Email Status
+      "", // O Email Sent At
+      "", // P Error Log
     ];
 
-
     sheet.appendRow(rowData);
-
 
     // ------------------------------------------------------------
     // Make screenshot clickable
@@ -303,67 +249,35 @@ function doPost(e) {
 
     const newRow = sheet.getLastRow();
 
-    if (
-      screenshotLink &&
-      screenshotLink.indexOf("https://") === 0
-    ) {
-
-      const linkCell =
-        sheet.getRange(newRow, COL.SCREENSHOT);
+    if (screenshotLink && screenshotLink.indexOf("https://") === 0) {
+      const linkCell = sheet.getRange(newRow, COL.SCREENSHOT);
 
       linkCell.setFormula(
-        '=HYPERLINK("' +
-        screenshotLink +
-        '","View Screenshot")'
+        '=HYPERLINK("' + screenshotLink + '","View Screenshot")',
       );
-
     }
-
 
     // ------------------------------------------------------------
     // Return success
     // ------------------------------------------------------------
 
-    return jsonResponse(
-      "success",
-      "Registration successful.",
-      {
-        ticketNumber: ticketNumber
-      }
-    );
-
-
+    return jsonResponse("success", "Registration successful.", {
+      ticketNumber: ticketNumber,
+    });
   } catch (error) {
+    Logger.log("doPost ERROR: " + error.stack);
 
-    Logger.log(
-      "doPost ERROR: " +
-      error.stack
-    );
-
-    return jsonResponse(
-      "error",
-      "Registration failed: " +
-      error.message
-    );
-
+    return jsonResponse("error", "Registration failed: " + error.message);
   }
-
 }
-
 
 // ================================================================
 // GET API HEALTH CHECK
 // ================================================================
 
 function doGet(e) {
-
-  return jsonResponse(
-    "online",
-    "CEBROID 2K26 Registration API is live."
-  );
-
+  return jsonResponse("online", "CEBROID 2K26 Registration API is live.");
 }
-
 
 // ================================================================
 // GOOGLE SHEET EDIT TRIGGER
@@ -382,29 +296,21 @@ function doGet(e) {
 // ================================================================
 
 function processVerification(e) {
-
   try {
-
     if (!e || !e.range) {
       return;
     }
 
-
     const sheet = e.range.getSheet();
-
 
     // Only operate on the Registrations sheet
 
-    if (
-      sheet.getName() !== CONFIG.SHEET_NAME
-    ) {
+    if (sheet.getName() !== CONFIG.SHEET_NAME) {
       return;
     }
 
-
     const row = e.range.getRow();
     const col = e.range.getColumn();
-
 
     // Ignore header
 
@@ -412,42 +318,27 @@ function processVerification(e) {
       return;
     }
 
-
     // Only react to Column J
 
     if (col !== COL.VERIFICATION) {
       return;
     }
 
-
-    const status =
-      String(e.value || "").trim();
-
+    const status = String(e.value || "").trim();
 
     // Only process Verified
 
-    if (
-      status.toLowerCase() !== "verified"
-    ) {
+    if (status.toLowerCase() !== "verified") {
       return;
     }
 
+    const passSent = String(
+      sheet.getRange(row, COL.PASS_SENT).getValue(),
+    ).trim();
 
-    const passSent =
-      String(
-        sheet
-          .getRange(row, COL.PASS_SENT)
-          .getValue()
-      ).trim();
-
-
-    const emailStatus =
-      String(
-        sheet
-          .getRange(row, COL.EMAIL_STATUS)
-          .getValue()
-      ).trim();
-
+    const emailStatus = String(
+      sheet.getRange(row, COL.EMAIL_STATUS).getValue(),
+    ).trim();
 
     // ------------------------------------------------------------
     // Prevent duplicate processing
@@ -457,355 +348,192 @@ function processVerification(e) {
       passSent.toLowerCase() === "yes" ||
       emailStatus.toLowerCase() === "sent"
     ) {
-
-      Logger.log(
-        "Pass already processed for row " +
-        row
-      );
+      Logger.log("Pass already processed for row " + row);
 
       return;
-
     }
-
 
     // ------------------------------------------------------------
     // Process participant
     // ------------------------------------------------------------
 
-    sendParticipantDocuments(
-      sheet,
-      row
-    );
-
-
+    sendParticipantDocuments(sheet, row);
   } catch (error) {
-
-    Logger.log(
-      "processVerification ERROR: " +
-      error.stack
-    );
-
+    Logger.log("processVerification ERROR: " + error.stack);
   }
-
 }
-
 
 // ================================================================
 // MAIN DOCUMENT PROCESSOR
 // ================================================================
 
 function sendParticipantDocuments(sheet, row) {
-
-  const lock =
-    LockService.getScriptLock();
-
+  const lock = LockService.getScriptLock();
 
   try {
-
     // Prevent simultaneous processing
 
     lock.waitLock(30000);
-
 
     // ------------------------------------------------------------
     // Get participant data
     // ------------------------------------------------------------
 
-    const participant =
-      getParticipantData(
-        sheet,
-        row
-      );
-
+    const participant = getParticipantData(sheet, row);
 
     // ------------------------------------------------------------
     // Update status
     // ------------------------------------------------------------
 
-    sheet
-      .getRange(row, COL.EMAIL_STATUS)
-      .setValue("Generating documents...");
+    sheet.getRange(row, COL.EMAIL_STATUS).setValue("Generating documents...");
 
-    sheet
-      .getRange(row, COL.ERROR_LOG)
-      .clearContent();
-
+    sheet.getRange(row, COL.ERROR_LOG).clearContent();
 
     // ------------------------------------------------------------
     // Generate QR code
     // ------------------------------------------------------------
 
-    const qrBlob =
-      generateQRCode(
-        participant.ticketNumber
-      );
-
+    const qrBlob = generateQRCode(participant.ticketNumber);
 
     // ------------------------------------------------------------
     // Generate Entry Pass PDF
     // ------------------------------------------------------------
 
-    const entryPassPDF =
-      generateEntryPassPDF(
-        participant,
-        qrBlob
-      );
-
+    const entryPassPDF = generateEntryPassPDF(participant, qrBlob);
 
     // ------------------------------------------------------------
     // Generate OD Letter PDF
     // ------------------------------------------------------------
 
-    const odLetterPDF =
-      generateODLetterPDF(
-        participant,
-        qrBlob
-      );
-
+    const odLetterPDF = generateODLetterPDF(participant, qrBlob);
 
     // ------------------------------------------------------------
     // Save PDFs to Drive if enabled
     // ------------------------------------------------------------
 
     if (CONFIG.SAVE_GENERATED_PDFS) {
-
       savePDFToDrive(
         entryPassPDF,
         CONFIG.ENTRY_PASS_PREFIX +
-        sanitizeFilename(
-          participant.name
-        ) +
-        "_" +
-        participant.ticketNumber +
-        ".pdf"
+          sanitizeFilename(participant.name) +
+          "_" +
+          participant.ticketNumber +
+          ".pdf",
       );
-
 
       savePDFToDrive(
         odLetterPDF,
         CONFIG.OD_LETTER_PREFIX +
-        sanitizeFilename(
-          participant.name
-        ) +
-        "_" +
-        participant.ticketNumber +
-        ".pdf"
+          sanitizeFilename(participant.name) +
+          "_" +
+          participant.ticketNumber +
+          ".pdf",
       );
-
     }
-
 
     // ------------------------------------------------------------
     // Send email
     // ------------------------------------------------------------
 
-    sheet
-      .getRange(row, COL.EMAIL_STATUS)
-      .setValue("Sending...");
+    sheet.getRange(row, COL.EMAIL_STATUS).setValue("Sending...");
 
-
-    sendParticipantEmail(
-      participant,
-      entryPassPDF,
-      odLetterPDF,
-      qrBlob
-    );
-
+    sendParticipantEmail(participant, entryPassPDF, odLetterPDF, qrBlob);
 
     // ------------------------------------------------------------
     // SUCCESS
     // ------------------------------------------------------------
 
-    sheet
-      .getRange(row, COL.PASS_SENT)
-      .setValue("Yes");
+    sheet.getRange(row, COL.PASS_SENT).setValue("Yes");
 
+    sheet.getRange(row, COL.OD_GENERATED).setValue("Yes");
 
-    sheet
-      .getRange(row, COL.OD_GENERATED)
-      .setValue("Yes");
+    sheet.getRange(row, COL.EMAIL_STATUS).setValue("Sent");
 
+    sheet.getRange(row, COL.EMAIL_SENT_AT).setValue(new Date());
 
-    sheet
-      .getRange(row, COL.EMAIL_STATUS)
-      .setValue("Sent");
+    sheet.getRange(row, COL.ERROR_LOG).clearContent();
 
-
-    sheet
-      .getRange(row, COL.EMAIL_SENT_AT)
-      .setValue(new Date());
-
-
-    sheet
-      .getRange(row, COL.ERROR_LOG)
-      .clearContent();
-
-
-    Logger.log(
-      "Documents sent successfully to " +
-      participant.email
-    );
-
-
+    Logger.log("Documents sent successfully to " + participant.email);
   } catch (error) {
-
-    Logger.log(
-      "sendParticipantDocuments ERROR: " +
-      error.stack
-    );
-
+    Logger.log("sendParticipantDocuments ERROR: " + error.stack);
 
     // ------------------------------------------------------------
     // FAILURE STATUS
     // ------------------------------------------------------------
 
-    sheet
-      .getRange(row, COL.EMAIL_STATUS)
-      .setValue("Failed");
-
+    sheet.getRange(row, COL.EMAIL_STATUS).setValue("Failed");
 
     sheet
       .getRange(row, COL.ERROR_LOG)
-      .setValue(
-        new Date().toISOString() +
-        " - " +
-        error.message
-      );
-
-
+      .setValue(new Date().toISOString() + " - " + error.message);
   } finally {
-
     try {
       lock.releaseLock();
     } catch (ignore) {}
-
   }
-
 }
-
 
 // ================================================================
 // GET PARTICIPANT DATA
 // ================================================================
 
 function getParticipantData(sheet, row) {
-
-  const data =
-    sheet
-      .getRange(
-        row,
-        1,
-        1,
-        COL.ERROR_LOG
-      )
-      .getValues()[0];
-
+  const data = sheet.getRange(row, 1, 1, COL.ERROR_LOG).getValues()[0];
 
   return {
-
     row: row,
 
     timestamp: data[COL.TIMESTAMP - 1],
 
-    name:
-      String(
-        data[COL.NAME - 1] || ""
-      ).trim(),
+    name: String(data[COL.NAME - 1] || "").trim(),
 
-    phone:
-      String(
-        data[COL.PHONE - 1] || ""
-      ).trim(),
+    phone: String(data[COL.PHONE - 1] || "").trim(),
 
-    email:
-      String(
-        data[COL.EMAIL - 1] || ""
-      ).trim(),
+    email: String(data[COL.EMAIL - 1] || "").trim(),
 
-    college:
-      String(
-        data[COL.COLLEGE - 1] || ""
-      ).trim(),
+    college: String(data[COL.COLLEGE - 1] || "").trim(),
 
-    events:
-      String(
-        data[COL.EVENTS - 1] || ""
-      ).trim(),
+    events: String(data[COL.EVENTS - 1] || "").trim(),
 
-    food:
-      String(
-        data[COL.FOOD - 1] || "Not specified"
-      ).trim(),
+    food: String(data[COL.FOOD - 1] || "Not specified").trim(),
 
-    fee:
-      String(
-        data[COL.FEE - 1] || ""
-      ).trim(),
+    fee: String(data[COL.FEE - 1] || "").trim(),
 
-    ticketNumber:
-      String(
-        data[COL.TICKET - 1] || ""
-      ).trim()
-
+    ticketNumber: String(data[COL.TICKET - 1] || "").trim(),
   };
-
 }
-
 
 // ================================================================
 // GENERATE UNIQUE TICKET NUMBER
 // ================================================================
 
 function generateTicketNumber(sheet) {
-
-  const lock =
-    LockService.getScriptLock();
-
+  const lock = LockService.getScriptLock();
 
   try {
-
     lock.waitLock(30000);
 
-
-    const lastRow =
-      Math.max(
-        sheet.getLastRow(),
-        1
-      );
-
+    const lastRow = Math.max(sheet.getLastRow(), 1);
 
     const ticketNumber =
-      CONFIG.TICKET_PREFIX +
-      String(lastRow)
-        .padStart(3, "0");
-
+      CONFIG.TICKET_PREFIX + String(lastRow).padStart(3, "0");
 
     return ticketNumber;
-
-
   } finally {
-
     try {
       lock.releaseLock();
     } catch (ignore) {}
-
   }
-
 }
-
 
 // ================================================================
 // GENERATE QR CODE
 // ================================================================
 
 function generateQRCode(ticketNumber) {
-
   if (!ticketNumber) {
-    throw new Error(
-      "Ticket number is missing."
-    );
+    throw new Error("Ticket number is missing.");
   }
-
 
   const qrUrl =
     CONFIG.QR_API +
@@ -814,53 +542,25 @@ function generateQRCode(ticketNumber) {
     "&size=500" +
     "&margin=2";
 
+  const response = UrlFetchApp.fetch(qrUrl, {
+    muteHttpExceptions: true,
+  });
 
-  const response =
-    UrlFetchApp.fetch(
-      qrUrl,
-      {
-        muteHttpExceptions: true
-      }
-    );
-
-
-  const responseCode =
-    response.getResponseCode();
-
+  const responseCode = response.getResponseCode();
 
   if (responseCode !== 200) {
-
-    throw new Error(
-      "QR generation failed. HTTP " +
-      responseCode
-    );
-
+    throw new Error("QR generation failed. HTTP " + responseCode);
   }
 
-
-  return response
-    .getBlob()
-    .setName(
-      ticketNumber + "_QR.png"
-    );
-
+  return response.getBlob().setName(ticketNumber + "_QR.png");
 }
-
 
 // ================================================================
 // GENERATE ENTRY PASS PDF
 // ================================================================
 
-function generateEntryPassPDF(
-  participant,
-  qrBlob
-) {
-
-  const qrBase64 =
-    Utilities.base64Encode(
-      qrBlob.getBytes()
-    );
-
+function generateEntryPassPDF(participant, qrBlob) {
+  const qrBase64 = Utilities.base64Encode(qrBlob.getBytes());
 
   const html = `
 <!DOCTYPE html>
@@ -1205,35 +905,22 @@ body {
 </html>
 `;
 
-
   return htmlToPDF(
     html,
     CONFIG.ENTRY_PASS_PREFIX +
-    sanitizeFilename(
-      participant.name
-    ) +
-    "_" +
-    participant.ticketNumber +
-    ".pdf"
+      sanitizeFilename(participant.name) +
+      "_" +
+      participant.ticketNumber +
+      ".pdf",
   );
-
 }
-
 
 // ================================================================
 // GENERATE OD LETTER PDF
 // ================================================================
 
-function generateODLetterPDF(
-  participant,
-  qrBlob
-) {
-
-  const qrBase64 =
-    Utilities.base64Encode(
-      qrBlob.getBytes()
-    );
-
+function generateODLetterPDF(participant, qrBlob) {
+  const qrBase64 = Utilities.base64Encode(qrBlob.getBytes());
 
   const html = `
 <!DOCTYPE html>
@@ -1676,94 +1363,55 @@ body {
 </html>
 `;
 
-
   return htmlToPDF(
     html,
     CONFIG.OD_LETTER_PREFIX +
-    sanitizeFilename(
-      participant.name
-    ) +
-    "_" +
-    participant.ticketNumber +
-    ".pdf"
+      sanitizeFilename(participant.name) +
+      "_" +
+      participant.ticketNumber +
+      ".pdf",
   );
-
 }
-
 
 // ================================================================
 // HTML → PDF
 // ================================================================
 
 function htmlToPDF(html, filename) {
+  const htmlBlob = Utilities.newBlob(
+    html,
+    "text/html",
+    filename.replace(/\.pdf$/i, ".html"),
+  );
 
-  const htmlBlob =
-    Utilities.newBlob(
-      html,
-      "text/html",
-      filename.replace(
-        /\.pdf$/i,
-        ".html"
-      )
-    );
-
-
-  const pdf =
-    htmlBlob.getAs(
-      "application/pdf"
-    );
-
+  const pdf = htmlBlob.getAs("application/pdf");
 
   return pdf.setName(filename);
-
 }
-
 
 // ================================================================
 // SEND PROFESSIONAL EMAIL
 // ================================================================
 
-function sendParticipantEmail(
-  participant,
-  entryPassPDF,
-  odLetterPDF,
-  qrBlob
-) {
+function sendParticipantEmail(participant, entryPassPDF, odLetterPDF, qrBlob) {
+  const safeName = escapeHtml(participant.name);
 
-  const safeName =
-    escapeHtml(
-      participant.name
-    );
+  const safeCollege = escapeHtml(participant.college);
 
-  const safeCollege =
-    escapeHtml(
-      participant.college
-    );
+  const safeEvents = escapeHtml(participant.events);
 
-  const safeEvents =
-    escapeHtml(
-      participant.events
-    );
-
-  const safeTicket =
-    escapeHtml(
-      participant.ticketNumber
-    );
-
+  const safeTicket = escapeHtml(participant.ticketNumber);
 
   const subject =
     CONFIG.EVENT_NAME +
     " | Registration Confirmed & Entry Pass - " +
     participant.ticketNumber;
 
-
   // --------------------------------------------------------------
   // Plain text fallback
   // --------------------------------------------------------------
 
-  const plainBody =
-
-`Dear ${participant.name},
+  const plainBody = `Dear ${participant.name},
 
 Greetings from ${CONFIG.ORGANIZATION}.
 
@@ -1792,7 +1440,6 @@ Regards,
 ${CONFIG.ORGANIZATION}
 ${CONFIG.DEPARTMENT}
 ${CONFIG.COLLEGE_NAME}`;
-
 
   // --------------------------------------------------------------
   // Professional HTML email
@@ -2265,13 +1912,11 @@ body {
 </html>
 `;
 
-
   // --------------------------------------------------------------
   // Send email with both PDFs
   // --------------------------------------------------------------
 
   MailApp.sendEmail({
-
     to: participant.email,
 
     subject: subject,
@@ -2280,131 +1925,58 @@ body {
 
     htmlBody: htmlBody,
 
-    attachments: [
-      entryPassPDF,
-      odLetterPDF
-    ],
+    attachments: [entryPassPDF, odLetterPDF],
 
-    name:
-      CONFIG.EMAIL_SENDER_NAME
-
+    name: CONFIG.EMAIL_SENDER_NAME,
   });
-
 }
-
 
 // ================================================================
 // UPLOAD PAYMENT SCREENSHOT
 // ================================================================
 
-function uploadToDrive(
-  dataUrl,
-  originalFileName,
-  name,
-  phone
-) {
-
-  const mimeMatch =
-    dataUrl.match(
-      /^data:([^;]+);base64,/
-    );
-
+function uploadToDrive(dataUrl, originalFileName, name, phone) {
+  const mimeMatch = dataUrl.match(/^data:([^;]+);base64,/);
 
   if (!mimeMatch) {
-
-    throw new Error(
-      "Cannot parse DataURL MIME type."
-    );
-
+    throw new Error("Cannot parse DataURL MIME type.");
   }
 
+  const mimeType = mimeMatch[1];
 
-  const mimeType =
-    mimeMatch[1];
-
-
-  const base64Content =
-    dataUrl.split(",")[1];
-
+  const base64Content = dataUrl.split(",")[1];
 
   if (!base64Content) {
-
-    throw new Error(
-      "Invalid Base64 image data."
-    );
-
+    throw new Error("Invalid Base64 image data.");
   }
 
+  const decoded = Utilities.base64Decode(base64Content);
 
-  const decoded =
-    Utilities.base64Decode(
-      base64Content
-    );
-
-
-  const originalName =
-    String(
-      originalFileName ||
-      "payment_screenshot.png"
-    );
-
+  const originalName = String(originalFileName || "payment_screenshot.png");
 
   const extension =
     originalName.indexOf(".") !== -1
-      ? originalName
-          .split(".")
-          .pop()
-          .toLowerCase()
+      ? originalName.split(".").pop().toLowerCase()
       : "png";
 
+  const safeName = sanitizeFilename(name);
 
-  const safeName =
-    sanitizeFilename(
-      name
-    );
+  const safePhone = sanitizeFilename(phone);
 
-
-  const safePhone =
-    sanitizeFilename(
-      phone
-    );
-
-
-  const timestamp =
-    Utilities.formatDate(
-      new Date(),
-      Session.getScriptTimeZone(),
-      "yyyyMMdd_HHmmss"
-    );
-
+  const timestamp = Utilities.formatDate(
+    new Date(),
+    Session.getScriptTimeZone(),
+    "yyyyMMdd_HHmmss",
+  );
 
   const fileName =
-    safeName +
-    "_" +
-    safePhone +
-    "_" +
-    timestamp +
-    "." +
-    extension;
+    safeName + "_" + safePhone + "_" + timestamp + "." + extension;
 
+  const folder = DriveApp.getFolderById(CONFIG.DRIVE_FOLDER_ID);
 
-  const folder =
-    DriveApp.getFolderById(
-      CONFIG.DRIVE_FOLDER_ID
-    );
+  const blob = Utilities.newBlob(decoded, mimeType, fileName);
 
-
-  const blob =
-    Utilities.newBlob(
-      decoded,
-      mimeType,
-      fileName
-    );
-
-
-  const file =
-    folder.createFile(blob);
-
+  const file = folder.createFile(blob);
 
   // --------------------------------------------------------------
   // NOTE:
@@ -2412,63 +1984,40 @@ function uploadToDrive(
   // who has the link.
   // --------------------------------------------------------------
 
-  file.setSharing(
-    DriveApp.Access.ANYONE_WITH_LINK,
-    DriveApp.Permission.VIEW
-  );
-
+  file.setSharing(DriveApp.Access.ANYONE_WITH_LINK, DriveApp.Permission.VIEW);
 
   return file.getUrl();
-
 }
-
 
 // ================================================================
 // SAVE GENERATED PDF TO DRIVE
 // ================================================================
 
-function savePDFToDrive(
-  pdfBlob,
-  filename
-) {
-
+function savePDFToDrive(pdfBlob, filename) {
   if (!CONFIG.PDF_FOLDER_ID) {
-
-    throw new Error(
-      "PDF_FOLDER_ID is not configured."
-    );
-
+    throw new Error("PDF_FOLDER_ID is not configured.");
   }
 
+  const folder = DriveApp.getFolderById(CONFIG.PDF_FOLDER_ID);
 
-  const folder =
-    DriveApp.getFolderById(
-      CONFIG.PDF_FOLDER_ID
-    );
-
-
-  return folder.createFile(
-    pdfBlob.setName(filename)
-  );
-
+  return folder.createFile(pdfBlob.setName(filename));
 }
-
 
 // ================================================================
 // INITIALIZE SHEET
 // ================================================================
 
 function initializeSheet(sheet) {
-
   const headers = [
-
     "Timestamp",
     "Full Name",
     "Contact Number",
     "Email",
     "College / Institution",
     "Events Selected",
+    "Food Preference",
     "Registration Fee",
+    "Transaction ID",
     "Payment Screenshot",
     "Ticket Number",
     "Verification Status",
@@ -2476,61 +2025,37 @@ function initializeSheet(sheet) {
     "OD Generated",
     "Email Status",
     "Email Sent At",
-    "Error Log"
-
+    "Error Log",
   ];
 
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+
+  sheet.setFrozenRows(1);
 
   sheet
-    .getRange(
-      1,
-      1,
-      1,
-      headers.length
-    )
-    .setValues([headers]);
-
-
-  sheet
-    .setFrozenRows(1);
-
-
-  sheet
-    .getRange(
-      1,
-      1,
-      1,
-      headers.length
-    )
+    .getRange(1, 1, 1, headers.length)
     .setFontWeight("bold")
     .setBackground("#222222")
     .setFontColor("#ffffff");
 
-
-  sheet
-    .autoResizeColumns(
-      1,
-      headers.length
-    );
-
+  sheet.autoResizeColumns(1, headers.length);
 }
-
 
 // ================================================================
 // ENSURE REQUIRED COLUMNS EXIST
 // ================================================================
 
 function ensureColumns(sheet) {
-
   const requiredHeaders = [
-
     "Timestamp",
     "Full Name",
     "Contact Number",
     "Email",
     "College / Institution",
     "Events Selected",
+    "Food Preference",
     "Registration Fee",
+    "Transaction ID",
     "Payment Screenshot",
     "Ticket Number",
     "Verification Status",
@@ -2538,168 +2063,83 @@ function ensureColumns(sheet) {
     "OD Generated",
     "Email Status",
     "Email Sent At",
-    "Error Log"
-
+    "Error Log",
   ];
 
+  const currentLastColumn = Math.max(sheet.getLastColumn(), requiredHeaders.length);
 
-  const currentLastColumn =
-    Math.max(
-      sheet.getLastColumn(),
-      1
-    );
+  const currentHeaders = sheet
+    .getRange(1, 1, 1, currentLastColumn)
+    .getValues()[0];
 
-
-  const currentHeaders =
-    sheet
-      .getRange(
-        1,
-        1,
-        1,
-        currentLastColumn
-      )
-      .getValues()[0];
-
-
-  requiredHeaders.forEach(
-    function(header, index) {
-
-      const column =
-        index + 1;
-
-
-      if (
-        currentHeaders[index] !== header
-      ) {
-
-        sheet
-          .getRange(
-            1,
-            column
-          )
-          .setValue(header);
-
-      }
-
+  // SAFE: Only fill cells that are completely empty.
+  // Never overwrite an existing header — that would shift all data.
+  requiredHeaders.forEach(function (header, index) {
+    const column = index + 1;
+    const existing = String(currentHeaders[index] || "").trim();
+    if (existing === "") {
+      sheet.getRange(1, column).setValue(header);
     }
-  );
-
+  });
 
   sheet.setFrozenRows(1);
-
 }
-
 
 // ================================================================
 // VALIDATE EMAIL
 // ================================================================
 
 function isValidEmail(email) {
+  const pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-  const pattern =
-    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-  return pattern.test(
-    String(email).trim()
-  );
-
+  return pattern.test(String(email).trim());
 }
-
 
 // ================================================================
 // SANITIZE FILENAMES
 // ================================================================
 
 function sanitizeFilename(value) {
-
   return String(value || "")
     .trim()
-    .replace(
-      /[^a-zA-Z0-9_-]/g,
-      "_"
-    )
-    .replace(
-      /_+/g,
-      "_"
-    );
-
+    .replace(/[^a-zA-Z0-9_-]/g, "_")
+    .replace(/_+/g, "_");
 }
-
 
 // ================================================================
 // HTML ESCAPE
 // ================================================================
 
 function escapeHtml(value) {
-
   return String(value || "")
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-    .replace(
-      /</g,
-      "&lt;"
-    )
-    .replace(
-      />/g,
-      "&gt;"
-    )
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-    .replace(
-      /'/g,
-      "&#039;"
-    );
-
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
-
 
 // ================================================================
 // JSON RESPONSE
 // ================================================================
 
-function jsonResponse(
-  status,
-  message,
-  extra
-) {
-
+function jsonResponse(status, message, extra) {
   const response = {
-
     status: status,
 
-    message: message
-
+    message: message,
   };
 
-
   if (extra) {
-
-    Object.keys(extra).forEach(
-      function(key) {
-
-        response[key] =
-          extra[key];
-
-      }
-    );
-
+    Object.keys(extra).forEach(function (key) {
+      response[key] = extra[key];
+    });
   }
 
-
-  return ContentService
-    .createTextOutput(
-      JSON.stringify(response)
-    )
-    .setMimeType(
-      ContentService.MimeType.JSON
-    );
-
+  return ContentService.createTextOutput(JSON.stringify(response)).setMimeType(
+    ContentService.MimeType.JSON,
+  );
 }
-
 
 // ================================================================
 // AUTHORIZATION
@@ -2708,40 +2148,20 @@ function jsonResponse(
 // ================================================================
 
 function authorizeScript() {
+  const ss = SpreadsheetApp.getActiveSpreadsheet();
 
-  const ss =
-    SpreadsheetApp
-      .getActiveSpreadsheet();
-
-
-  const sheet =
-    ss.getSheetByName(
-      CONFIG.SHEET_NAME
-    );
-
+  const sheet = ss.getSheetByName(CONFIG.SHEET_NAME);
 
   // Force permissions
 
   if (sheet) {
-
     sheet.getName();
-
   }
 
+  DriveApp.getFolderById(CONFIG.DRIVE_FOLDER_ID).getName();
 
-  DriveApp
-    .getFolderById(
-      CONFIG.DRIVE_FOLDER_ID
-    )
-    .getName();
-
-
-  Logger.log(
-    "Authorization successful."
-  );
-
+  Logger.log("Authorization successful.");
 }
-
 
 // ================================================================
 // MANUAL TEST
@@ -2757,30 +2177,15 @@ function authorizeScript() {
 // ================================================================
 
 function testParticipantDocuments() {
-
   const TEST_ROW = 2;
 
-
-  const sheet =
-    SpreadsheetApp
-      .getActiveSpreadsheet()
-      .getSheetByName(
-        CONFIG.SHEET_NAME
-      );
-
-
-  if (!sheet) {
-
-    throw new Error(
-      "Registrations sheet not found."
-    );
-
-  }
-
-
-  sendParticipantDocuments(
-    sheet,
-    TEST_ROW
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName(
+    CONFIG.SHEET_NAME,
   );
 
-} 
+  if (!sheet) {
+    throw new Error("Registrations sheet not found.");
+  }
+
+  sendParticipantDocuments(sheet, TEST_ROW);
+}
