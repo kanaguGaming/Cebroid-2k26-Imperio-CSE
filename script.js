@@ -16,7 +16,7 @@ const eventsData = [
             "Presentation must be in English."
         ],
         teamSize: "Up to 4 members",
-        prizes: "1st: ₹1000 | 2nd ₹500",
+        prizes: "1st: ₹1500 | 2nd: ₹1000",
         contact: "Kanaga Prasath B",
         phone: "+91 8940293794",
         img: "assets/Tyrell – Paper Presentation.png"
@@ -35,7 +35,7 @@ const eventsData = [
             "Q&A session of 3 minutes follows each pitch."
         ],
         teamSize: "Up to 4 members",
-        prizes: "1st: ₹1000 | 2nd ₹500",
+        prizes: "1st: ₹1500 | 2nd: ₹1000",
         contact: "Pradeeshwar S",
         phone: "+91 84894 04344",
         img: "assets/Lanyster - Shark tank.png"
@@ -51,7 +51,6 @@ const eventsData = [
             "Solo or teams of 2 only.",
             "Bring your own laptop — no sharing.",
             "No DDoS or destructive attacks on the server.",
-            "Usage of AI tools leads to disqualification.",
             "Do not copy or share flags between teams."
         ],
         teamSize: "Solo or 2 members",
@@ -266,6 +265,7 @@ function renderCards() {
                 <div class="card-theme">${event.theme}</div>
                 <h3 class="card-title">${event.title}</h3>
                 <p class="card-tagline">${event.tagline}</p>
+                <div class="more-details-btn">more details &rarr;</div>
             </div>
         `;
         

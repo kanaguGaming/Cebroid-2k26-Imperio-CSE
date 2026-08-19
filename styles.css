@@ -362,6 +362,23 @@ body::before {
     line-height: 1.5;
 }
 
+.more-details-btn {
+    margin-top: 15px;
+    font-size: 0.85rem;
+    color: var(--primary-glow);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.3s;
+    display: inline-block;
+}
+
+.event-card:hover .more-details-btn {
+    opacity: 1;
+    transform: translateX(5px);
+}
+
 /* =====================================================================
    AGENDA SECTION
    ===================================================================== */

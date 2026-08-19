@@ -1,4 +1,4 @@
-/**
+﻿/**
  * ================================================================
  * CEBROID 2K26 - Registration & Automated Pass Backend
  * Production Version
@@ -102,14 +102,15 @@ const COL = {
   EVENTS: 6,
   FOOD: 7,
   FEE: 8,
-  SCREENSHOT: 9,
-  TICKET: 10,
-  VERIFICATION: 11,
-  PASS_SENT: 12,
-  OD_GENERATED: 13,
-  EMAIL_STATUS: 14,
-  EMAIL_SENT_AT: 15,
-  ERROR_LOG: 16,
+  TXN_ID: 9,
+  SCREENSHOT: 10,
+  TICKET: 11,
+  VERIFICATION: 12,
+  PASS_SENT: 13,
+  OD_GENERATED: 14,
+  EMAIL_STATUS: 15,
+  EMAIL_SENT_AT: 16,
+  ERROR_LOG: 17,
 };
 
 // ================================================================
@@ -163,6 +164,7 @@ function doPost(e) {
     const food = data.food ? String(data.food).trim() : "Not specified";
 
     const fee = data.fee ? String(data.fee).trim() : CONFIG.DEFAULT_FEE;
+    const txnId = data.transactionId ? String(data.transactionId).trim() : "";
 
     // ------------------------------------------------------------
     // Validate email
@@ -223,22 +225,23 @@ function doPost(e) {
     // ------------------------------------------------------------
 
     const rowData = [
-      new Date(), // A Timestamp
-      name, // B Name
-      phone, // C Phone
-      email, // D Email
-      college, // E College
-      events, // F Events
-      food, // G Food Preference
-      fee, // H Fee
-      screenshotLink, // I Screenshot
-      ticketNumber, // J Ticket
-      "Pending", // K Verification
-      "No", // L Pass Sent
-      "No", // M OD Generated
-      "Not Sent", // N Email Status
-      "", // O Email Sent At
-      "", // P Error Log
+      new Date(),       // A Timestamp
+      name,             // B Full Name
+      phone,            // C Contact Number
+      email,            // D Email
+      college,          // E College / Institution
+      events,           // F Events Selected
+      food,             // G Food Preference
+      fee,              // H Registration Fee
+      txnId,            // I Transaction ID
+      screenshotLink,   // J Payment Screenshot
+      ticketNumber,     // K Ticket Number
+      "Pending",        // L Verification Status
+      "No",             // M Pass Sent
+      "No",             // N OD Generated
+      "Not Sent",       // O Email Status
+      "",               // P Email Sent At
+      "",               // Q Error Log
     ];
 
     sheet.appendRow(rowData);
@@ -1286,7 +1289,7 @@ body {
     </td>
 
     <td>
-      ${escapeHtml(CONFIG.EVENT_DATE)}
+      28 August 2026
     </td>
 
   </tr>
