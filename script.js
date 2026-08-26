@@ -873,10 +873,10 @@ scrollHint.addEventListener('click', () => {
    ═══════════════════════════════════════════════════════════════ */
 (function initCountdowns() {
     // Target dates (IST = UTC+5:30)
-    // Event: 28 August 2026, 09:00 AM IST
-    const EVENT_DATE = new Date('2026-08-28T09:00:00+05:30');
-    // Registration close: 26 August 2026, 11:59 PM IST
-    const REG_CLOSE_DATE = new Date('2026-08-26T23:59:59+05:30');
+    // Event: 09 September 2026, 09:00 AM IST
+    const EVENT_DATE = new Date('2026-09-09T09:00:00+05:30');
+    // Registration close: 07 September 2026, 11:59 PM IST
+    const REG_CLOSE_DATE = new Date('2026-09-07T23:59:59+05:30');
 
     /**
      * Pads a number to 2 digits.
