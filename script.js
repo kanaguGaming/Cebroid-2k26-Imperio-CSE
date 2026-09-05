@@ -11,7 +11,7 @@ const eventsData = [
         tagline: "A classic presentation of knowledge. Updates tracked by the Maesters.",
         desc: "Present your research papers to the esteemed Archmaesters. Originality and depth of knowledge will decide your fate in the Citadel.",
         rules: [
-            "Team must contain minimum 1 member to maximum 4 team members."
+            "Team must contain minimum 1 member to maximum 4 team members.",
             "10 minutes for presentation, 5 minutes for Q&A.",
             "Plagiarism leads to immediate disqualification.",
             "Each team member must contribute the presentation.",
@@ -36,7 +36,7 @@ const eventsData = [
             "The project must be original and developed by the team.",
             "Each team must have a functional demonstration or working prototype of their project.",
             "Pitch must be under 5 minutes.",
-            "Projects acn be based on Software, hardware, AI/ML, IoT, Applications,  Robotics ect.,"
+            "Projects acn be based on Software, hardware, AI/ML, IoT, Applications,  Robotics ect.,",
             "Q&A session of 3 minutes follows each pitch.",
             "Juries decision will be final.",
             "Report 10-15 minute befor alloted time."
@@ -181,7 +181,7 @@ const eventsData = [
             "Correct answer = disqualification, convincing false answer = points.",
             "Uses believable technical terms.",
             "Answers within given seconds confidently without hesitation. Each round carries an different time stamps.",
-            "Avoids simply adding "not" to the correct answer.",
+            "Avoids simply adding not to the correct answer.",
             "Answers must be tech-related — no random gibberish.",
             "Accept the Judge's decisions.No Arguments with Event Co-ordinators.No Arguments with Other Team members."
         ],
@@ -199,7 +199,7 @@ const eventsData = [
         tagline: "Act out technical terms without speaking. Hold the door!",
         desc: "No words allowed. Only actions. Act out complex technical architectures and terms while your partner decodes your silent performance.",
         rules: [
-            "Exactly 2 participants per team allowed."
+            "Exactly 2 participants per team allowed.",
             "A bowl contains several technical words, One participant randomly picks a word from the bowl.",
             "Act out the word using only gestures and body movements.",
             "The other participant must identify and guess the word.",
