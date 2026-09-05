@@ -11,14 +11,17 @@ const eventsData = [
         tagline: "A classic presentation of knowledge. Updates tracked by the Maesters.",
         desc: "Present your research papers to the esteemed Archmaesters. Originality and depth of knowledge will decide your fate in the Citadel.",
         rules: [
+            "Team must contain minimum 1 member to maximum 4 team members."
             "10 minutes for presentation, 5 minutes for Q&A.",
             "Plagiarism leads to immediate disqualification.",
-            "Presentation must be in English."
+            "Each team member must contribute the presentation.",
+            "Juries decision will be final.",
+            "Report 10-15 minute befor alloted time."
         ],
         teamSize: "Up to 4 members",
-        prizes: "1st: ₹1500 | 2nd: ₹1000",
-        contact: "Kanaga Prasath B",
-        phone: "+91 8940293794",
+        prizes: "1st: ₹1000",
+        contact: "Barani Kumar",
+        phone: "+91 93635 65422",
         img: "assets/Tyrell – Paper Presentation.png"
     },
     {
@@ -29,15 +32,19 @@ const eventsData = [
         tagline: "Project expo with custom gold/silver coin investments via QR.",
         desc: "Pitch your tech project to the masters of the Iron Bank. Secure investments from attendees using custom QR coins and win the Iron Throne of innovation.",
         rules: [
-            "Team of up to 4 members.",
-            "Working prototype is required.",
+            "Team must contain minimum 1 member to maximum 4 team members.",
+            "The project must be original and developed by the team.",
+            "Each team must have a functional demonstration or working prototype of their project.",
             "Pitch must be under 5 minutes.",
-            "Q&A session of 3 minutes follows each pitch."
+            "Projects acn be based on Software, hardware, AI/ML, IoT, Applications,  Robotics ect.,"
+            "Q&A session of 3 minutes follows each pitch.",
+            "Juries decision will be final.",
+            "Report 10-15 minute befor alloted time."
         ],
         teamSize: "Up to 4 members",
-        prizes: "1st: ₹1500 | 2nd: ₹1000",
-        contact: "Pradeeshwar S",
-        phone: "+91 84894 04344",
+        prizes: "1st: ₹1000",
+        contact: "Thenmozhi",
+        phone: "+91 93428 02658",
         img: "assets/Lanyster - Shark tank.png"
     },
     {
@@ -48,10 +55,11 @@ const eventsData = [
         tagline: "Cybersecurity CTF. Find the hidden flags in images and files.",
         desc: "Infiltrate the systems and uncover the hidden secrets. Become no one and bypass the security to claim your flags.",
         rules: [
-            "Solo or teams of 2 only.",
-            "Bring your own laptop — no sharing.",
-            "No DDoS or destructive attacks on the server.",
-            "Do not copy or share flags between teams."
+            "Attack only the challenge-provided URLs, files, IPs, and information; never target the CTF platform, scoreboard, hosting servers, or event website, and report any platform vulnerability to the organizers.",
+            "Maximum 2 members per team; collaborate only within your registered team, do not share flags/hints/solutions outside it, and use only one account per participant—violations or scoreboard manipulation may lead to disqualification.",
+            "Do not disrupt the challenge environment or network; respect participants and organizers, with harassment, toxicity, abuse, teasing, or provoking prohibited.",
+            "AI tools or automated assistants must not be used to directly solve challenges or generate solutions; investigative challenges must use non-AI browsers/search engines, while permitted online investigative tools, decoders, and articles may be used.",
+            "Organizers may modify rules, adjust challenge points, or disqualify teams for cheating, malicious activity, or rule violations. All decisions made by the CTF organizers are final."
         ],
         teamSize: "Solo or 2 members",
         prizes: "1st: ₹1000",
@@ -69,13 +77,16 @@ const eventsData = [
         rules: [
             "Exactly 2 members per team.",
             "Only one member codes at a time.",
-            "Swap every 5 minutes — no exceptions.",
-            "No external references or internet allowed."
+            "Python, java, C programing languages.",
+            "Using mobiles, AI tools, External answers may lead to disqualification.",
+            "Swap every 2 minutes — no exceptions.",
+            "No external references or internet allowed.",
+            "Organizers may modify rules, adjust challenge points, or disqualify teams for cheating, malicious activity, or rule violations. All decisions made by the CTF organizers are final."
         ],
         teamSize: "Exactly 2 members",
-        prizes: "1st: ₹1000",
-        contact: "Harisha V",
-        phone: "+91 93426 27765",
+        prizes: "1st: ₹500",
+        contact: "Jaisriram",
+        phone: "+91 87542 29949",
         img: "assets/barotheon - Debug Relay.png"
     },
     {
@@ -86,15 +97,17 @@ const eventsData = [
         tagline: "Design a wild, creative, and completely frustrating UI. Chaos is a ladder.",
         desc: "Create the most diabolical, worst possible user experience. The more frustrated the tester, the higher your score. Embrace chaos.",
         rules: [
-            "Individual participation only.",
-            "Any prior work or templates not allowed.",
-            "Must be functional but deliberately infuriating.",
-            "Design must be submitted as a live prototype."
+            "Open to individuals and teams of up to 2 members",
+            "Participants may study the provided reference video, but the on-spot task will differ; all designs must be original with no copying or plagiarism.",
+            "personal laptops are encouraged, while college systems may be used subject to availability and browser-only development.",
+            "Each round may have specific restrictions announced by organizers; participants must complete and submit their work within the given time and stop when time expires.",
+            "AI, external tools, pre-prepared projects/code, unauthorized resources, sharing of designs/code/solutions, or accessing another participant’s system/files/account without permission are prohibited as per round-specific restrictions.",
+            "Submit through the specified method before the deadline; rule violations or failure to follow coordinator instructions may lead to disqualification, and organizers/judges may modify or enforce rules with their decision being final."
         ],
         teamSize: "Individual",
-        prizes: "1st: ₹1000",
-        contact: "Narendhar D S",
-        phone: "+91 99400 42140",
+        prizes: "1st: ₹500",
+        contact: "Gowtham",
+        phone: "+91 90426 66135",
         img: "assets/Targaryen - UI Design.png"
     },
     {
@@ -124,15 +137,17 @@ const eventsData = [
         tagline: "Look at an image once, then write the prompt to recreate it.",
         desc: "Harness the power of sight. View an AI-generated image for 10 seconds, then craft the exact prompt to recreate it. Precision is power.",
         rules: [
-            "Individual participation only.",
-            "No internet browsing during prompt writing.",
-            "Closest match to the original image wins.",
-            "Prompts must be typed, not dictated."
+            "A reference image will be given at the start of each round.",
+            "Participants must recreate the image using text prompts only.",
+            "Image uploads or image-to-image tools are strictly not allowed.",
+            "Participants must bring their own laptop.",
+            "Any AI tools can be used for image generation.",
+            "participants must submit the chat link used to generate the image at the end of each round."
         ],
         teamSize: "Individual",
         prizes: "1st: ₹500",
-        contact: "Narendhar D S",
-        phone: "+91 99400 42140",
+        contact: "Shalini",
+        phone: "+91 98423 59959",
         img: "assets/Martell - AI promt battle.png"
     },
     {
@@ -144,9 +159,10 @@ const eventsData = [
         desc: "You know nothing! Guess the technical term by connecting completely unrelated, dumb pictures drawn by your teammate.",
         rules: [
             "Teams of 2 members.",
-            "One member draws, the other guesses.",
-            "No speaking, mouthing, or pointing allowed.",
-            "Scoring is time-based."
+            "Images will be displayed on the screen.",
+            "Both team members can discuss and identify the technical word.",
+            "No external help or electronic devices are allowed.",
+            "Answers must be given within the given time limit. "
         ],
         teamSize: "Exactly 2 members",
         prizes: "1st: ₹500",
@@ -162,12 +178,14 @@ const eventsData = [
         tagline: "Technical questions, but you must provide the WRONG answers only.",
         desc: "Deceive and confuse. Answer technical questions with completely wrong but convincing answers. The more absurd yet believable, the better.",
         rules: [
-            "Pairs only.",
-            "Hesitation for more than 5 seconds leads to elimination.",
-            "Correct answers will get you instantly disqualified.",
-            "Answers must be tech-related — no random gibberish."
+            "Correct answer = disqualification, convincing false answer = points.",
+            "Uses believable technical terms.",
+            "Answers within given seconds confidently without hesitation. Each round carries an different time stamps.",
+            "Avoids simply adding "not" to the correct answer.",
+            "Answers must be tech-related — no random gibberish.",
+            "Accept the Judge's decisions.No Arguments with Event Co-ordinators.No Arguments with Other Team members."
         ],
-        teamSize: "Exactly 2 members",
+        teamSize: "Solo Participation",
         prizes: "1st: ₹500",
         contact: "Yogesh",
         phone: "+91 96007 01636",
@@ -181,15 +199,17 @@ const eventsData = [
         tagline: "Act out technical terms without speaking. Hold the door!",
         desc: "No words allowed. Only actions. Act out complex technical architectures and terms while your partner decodes your silent performance.",
         rules: [
-            "Teams of 2 members.",
-            "No speaking, no pointing at physical objects.",
-            "Guessing must be the exact technical term.",
-            "Each round is strictly time-limited."
+            "Exactly 2 participants per team allowed."
+            "A bowl contains several technical words, One participant randomly picks a word from the bowl.",
+            "Act out the word using only gestures and body movements.",
+            "The other participant must identify and guess the word.",
+            "No talking, sounds, or verbal clues allowed.",
+            "Points awarded for every correct guess within time."
         ],
         teamSize: "Exactly 2 members",
         prizes: "1st: ₹500",
-        contact: "Andrew David",
-        phone: "+91 93635 97327",
+        contact: "Sanjay",
+        phone: "+91 63744 95124",
         img: "assets/Stark - Binary Charades.png"
     }
 ];
