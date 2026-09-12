@@ -19,10 +19,11 @@ const eventsData = [
             "Report 10-15 minute befor alloted time."
         ],
         teamSize: "Up to 4 members",
-        prizes: "1st: ₹1000",
+        prizes: "1st: \u20b91000",
         contact: "Barani Kumar",
-        phone: "+91 93635 65422",
-        img: "assets/Tyrell – Paper Presentation.png"
+        winner: "Santhos Anandhan & Team",
+        runnerUp: "Vaishnavi & Team",
+        img: "assets/Tyrell \u2013 Paper Presentation.png"
     },
     {
         id: "shark_tank",
@@ -42,9 +43,10 @@ const eventsData = [
             "Report 10-15 minute befor alloted time."
         ],
         teamSize: "Up to 4 members",
-        prizes: "1st: ₹1000",
+        prizes: "1st: \u20b91000",
         contact: "Thenmozhi",
-        phone: "+91 93428 02658",
+        winner: "Srimathi & Team",
+        runnerUp: "Santhosh & Team",
         img: "assets/Lanyster - Shark tank.png"
     },
     {
@@ -56,15 +58,16 @@ const eventsData = [
         desc: "Infiltrate the systems and uncover the hidden secrets. Become no one and bypass the security to claim your flags.",
         rules: [
             "Attack only the challenge-provided URLs, files, IPs, and information; never target the CTF platform, scoreboard, hosting servers, or event website, and report any platform vulnerability to the organizers.",
-            "Maximum 2 members per team; collaborate only within your registered team, do not share flags/hints/solutions outside it, and use only one account per participant—violations or scoreboard manipulation may lead to disqualification.",
+            "Maximum 2 members per team; collaborate only within your registered team, do not share flags/hints/solutions outside it, and use only one account per participant\u2014violations or scoreboard manipulation may lead to disqualification.",
             "Do not disrupt the challenge environment or network; respect participants and organizers, with harassment, toxicity, abuse, teasing, or provoking prohibited.",
             "AI tools or automated assistants must not be used to directly solve challenges or generate solutions; investigative challenges must use non-AI browsers/search engines, while permitted online investigative tools, decoders, and articles may be used.",
             "Organizers may modify rules, adjust challenge points, or disqualify teams for cheating, malicious activity, or rule violations. All decisions made by the CTF organizers are final."
         ],
         teamSize: "Solo or 2 members",
-        prizes: "1st: ₹1000",
+        prizes: "1st: \u20b91000",
         contact: "Harish Kumar",
-        phone: "+91 95004 62134",
+        winner: "Shalini",
+        runnerUp: "Gopinath",
         img: "assets/GreyJoy - CTF.png"
     },
     {
@@ -79,14 +82,15 @@ const eventsData = [
             "Only one member codes at a time.",
             "Python, java, C programing languages.",
             "Using mobiles, AI tools, External answers may lead to disqualification.",
-            "Swap every 2 minutes — no exceptions.",
+            "Swap every 2 minutes \u2014 no exceptions.",
             "No external references or internet allowed.",
             "Organizers may modify rules, adjust challenge points, or disqualify teams for cheating, malicious activity, or rule violations. All decisions made by the CTF organizers are final."
         ],
         teamSize: "Exactly 2 members",
-        prizes: "1st: ₹500",
+        prizes: "1st: \u20b9500",
         contact: "Jaisriram",
-        phone: "+91 87542 29949",
+        winner: "Ellamal & Aristo Paul",
+        runnerUp: "[TBA]",
         img: "assets/barotheon - Debug Relay.png"
     },
     {
@@ -101,13 +105,14 @@ const eventsData = [
             "Participants may study the provided reference video, but the on-spot task will differ; all designs must be original with no copying or plagiarism.",
             "personal laptops are encouraged, while college systems may be used subject to availability and browser-only development.",
             "Each round may have specific restrictions announced by organizers; participants must complete and submit their work within the given time and stop when time expires.",
-            "AI, external tools, pre-prepared projects/code, unauthorized resources, sharing of designs/code/solutions, or accessing another participant’s system/files/account without permission are prohibited as per round-specific restrictions.",
+            "AI, external tools, pre-prepared projects/code, unauthorized resources, sharing of designs/code/solutions, or accessing another participant's system/files/account without permission are prohibited as per round-specific restrictions.",
             "Submit through the specified method before the deadline; rule violations or failure to follow coordinator instructions may lead to disqualification, and organizers/judges may modify or enforce rules with their decision being final."
         ],
         teamSize: "Individual",
-        prizes: "1st: ₹500",
+        prizes: "1st: \u20b9500",
         contact: "Gowtham",
-        phone: "+91 90426 66135",
+        winner: "Vaishnavi & Team",
+        runnerUp: "Dinesh & Team",
         img: "assets/Targaryen - UI Design.png"
     },
     {
@@ -124,9 +129,10 @@ const eventsData = [
             "No smartphones or secondary devices allowed."
         ],
         teamSize: "Individual",
-        prizes: "1st: ₹1000",
+        prizes: "1st: \u20b91000",
         contact: "Harish Kumar",
-        phone: "+91 95004 62134",
+        winner: "Thuyavan",
+        runnerUp: "Krishna Khanth",
         img: "assets/Arryn – Tech Quiz.png"
     },
     {
@@ -145,9 +151,10 @@ const eventsData = [
             "participants must submit the chat link used to generate the image at the end of each round."
         ],
         teamSize: "Individual",
-        prizes: "1st: ₹500",
+        prizes: "1st: \u20b9500",
         contact: "Shalini",
-        phone: "+91 98423 59959",
+        winner: "Sanjagi & Team",
+        runnerUp: "Kabitha",
         img: "assets/Martell - AI promt battle.png"
     },
     {
@@ -165,9 +172,10 @@ const eventsData = [
             "Answers must be given within the given time limit. "
         ],
         teamSize: "Exactly 2 members",
-        prizes: "1st: ₹500",
+        prizes: "1st: \u20b9500",
         contact: "Ponvelan",
-        phone: "+91 81484 37075",
+        winner: "Rakshithadevi & Team",
+        runnerUp: "Morani & Team",
         img: "assets/Tully – TechDumb Pictionary.png"
     },
     {
@@ -182,13 +190,14 @@ const eventsData = [
             "Uses believable technical terms.",
             "Answers within given seconds confidently without hesitation. Each round carries an different time stamps.",
             "Avoids simply adding not to the correct answer.",
-            "Answers must be tech-related — no random gibberish.",
+            "Answers must be tech-related \u2014 no random gibberish.",
             "Accept the Judge's decisions.No Arguments with Event Co-ordinators.No Arguments with Other Team members."
         ],
         teamSize: "Solo Participation",
-        prizes: "1st: ₹500",
+        prizes: "1st: \u20b9500",
         contact: "Yogesh",
-        phone: "+91 96007 01636",
+        winner: "Chandru & Team",
+        runnerUp: "Diwakar & Team",
         img: "assets/Giantsbane – Down Side UP.png"
     },
     {
@@ -207,12 +216,14 @@ const eventsData = [
             "Points awarded for every correct guess within time."
         ],
         teamSize: "Exactly 2 members",
-        prizes: "1st: ₹500",
+        prizes: "1st: \u20b9500",
         contact: "Sanjay",
-        phone: "+91 63744 95124",
+        winner: "Sanjay & Team",
+        runnerUp: "Shalini & Team",
         img: "assets/Stark - Binary Charades.png"
     }
 ];
+
 
 // DOM Elements
 const splashScreen = document.getElementById('splash-screen');
@@ -262,10 +273,54 @@ window.addEventListener('load', () => {
       
     document.body.style.overflow = 'hidden'; // Prevent scrolling during splash
     
-    // Initialize cards and registration checkboxes
+    // Initialize cards and winners grid
     renderCards();
-    renderEventCheckboxes();
+    renderWinnersGrid();
 });
+
+// Render Winners Grid
+function renderWinnersGrid() {
+    const grid = document.getElementById('winners-grid');
+    if (!grid) return;
+    grid.innerHTML = '';
+    eventsData.forEach(event => {
+        const card = document.createElement('div');
+        card.className = 'winner-card';
+        let tierClass = 'tier-1';
+        if (event.tier === 'Tier 2') tierClass = 'tier-2';
+        else if (event.tier === 'Tier 3') tierClass = 'tier-3';
+        card.innerHTML = `
+            <div class="winner-card-header">
+                <div class="winner-event-badge ${tierClass}">${event.tier}</div>
+                <h3 class="winner-event-title">${event.title}</h3>
+            </div>
+            <div class="winner-entry">
+                <span class="winner-medal gold"><i class="fas fa-trophy"></i></span>
+                <div class="winner-info">
+                    <span class="winner-label">Winner</span>
+                    <span class="winner-name">${event.winner}</span>
+                </div>
+            </div>
+            <div class="winner-entry">
+                <span class="winner-medal silver"><i class="fas fa-medal"></i></span>
+                <div class="winner-info">
+                    <span class="winner-label">Runner-Up</span>
+                    <span class="winner-name">${event.runnerUp}</span>
+                </div>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+    // Animate in
+    gsap.from('.winner-card', {
+        y: 60,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.08,
+        ease: 'power3.out',
+        scrollTrigger: null
+    });
+}
 
 // Render Event Cards
 function renderCards() {
@@ -311,8 +366,27 @@ function openEventOverlay(event, card) {
     document.getElementById('detail-team-size').innerText = event.teamSize;
     document.getElementById('detail-prizes').innerText = event.prizes;
     document.getElementById('detail-coord-name').innerText = event.contact;
-    document.getElementById('detail-coord-phone').href = `tel:${event.phone}`;
-    document.getElementById('detail-coord-phone-text').innerText = event.phone;
+
+    // ── Populate winners in popup ────────────────────────────────────────────────
+    const winnersList = document.getElementById('popup-winners-list');
+    if (winnersList) {
+        winnersList.innerHTML = `
+            <div class="popup-winner-row">
+                <span class="winner-medal gold"><i class="fas fa-trophy"></i></span>
+                <div class="winner-info">
+                    <span class="winner-label">Winner</span>
+                    <span class="winner-name">${event.winner}</span>
+                </div>
+            </div>
+            <div class="popup-winner-row">
+                <span class="winner-medal silver"><i class="fas fa-medal"></i></span>
+                <div class="winner-info">
+                    <span class="winner-label">Runner-Up</span>
+                    <span class="winner-name">${event.runnerUp}</span>
+                </div>
+            </div>
+        `;
+    }
 
     // ── Show overlay ────────────────────────────────────────────────────
     eventOverlay.classList.remove('hidden');
@@ -390,425 +464,12 @@ eventOverlay.addEventListener('click', (e) => {
     if (e.target === eventOverlay) closeEventOverlay();
 });
 
-// =====================================================================
-// INDIVIDUAL REGISTRATION SECTION
-// =====================================================================
-const openRegFormBtn = document.getElementById('open-reg-form');
-const closeRegFormBtn = document.getElementById('close-reg-form');
-const registerBanner = document.getElementById('register-banner');
-const registerFormContainer = document.getElementById('register-form-container');
-const individualRegForm = document.getElementById('individual-reg-form');
-const eventsCheckboxGrid = document.getElementById('events-checkbox-grid');
-
-// Step elements
-const step1 = document.getElementById('reg-step-1');
-const step2 = document.getElementById('reg-step-2');
-const stepInd1 = document.getElementById('step-ind-1');
-const stepInd2 = document.getElementById('step-ind-2');
-const proceedBtn = document.getElementById('proceed-to-payment');
-const backBtn = document.getElementById('back-to-step1');
-const step1Error = document.getElementById('step1-error');
-const step2Error = document.getElementById('step2-error');
-
-// File upload elements
-const screenshotInput = document.getElementById('reg-screenshot');
-const fileUploadArea = document.getElementById('file-upload-area');
-const filePlaceholder = document.getElementById('file-placeholder');
-const filePreview = document.getElementById('file-preview');
-const previewImg = document.getElementById('preview-img');
-const previewName = document.getElementById('preview-name');
-const previewSize = document.getElementById('preview-size');
-const removeFileBtn = document.getElementById('remove-file');
-
-// Inject event checkboxes from eventsData
-function renderEventCheckboxes() {
-    eventsCheckboxGrid.innerHTML = '';
-    eventsData.forEach(event => {
-        const item = document.createElement('label');
-        item.className = 'event-checkbox-item';
-        // NOTE: Do NOT set item.htmlFor here — the input is already inside the label.
-        // Setting both causes a double-toggle bug (browser fires the click twice).
-        item.innerHTML = `
-            <input type="checkbox" id="chk-${event.id}" name="events" value="${event.title}">
-            <span class="checkbox-custom"></span>
-            <span class="checkbox-label">${event.title}</span>
-        `;
-        eventsCheckboxGrid.appendChild(item);
-    });
-}
-
-// Open registration form
-openRegFormBtn.addEventListener('click', () => {
-    registerBanner.classList.add('hidden');
-    registerFormContainer.classList.remove('hidden');
-    gsap.fromTo('#register-form-container',
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.5, ease: 'power3.out' }
-    );
-    document.getElementById('register').scrollIntoView({ behavior: 'smooth' });
-});
-
-// Close / collapse back to banner (also resets form to step 1)
-closeRegFormBtn.addEventListener('click', () => {
-    gsap.to('#register-form-container', {
-        opacity: 0, y: 20, duration: 0.3, onComplete: () => {
-            registerFormContainer.classList.add('hidden');
-            registerBanner.classList.remove('hidden');
-            gsap.fromTo('#register-banner', { opacity: 0 }, { opacity: 1, duration: 0.4 });
-            resetFormToStep1();
-        }
-    });
-});
-
-// Reset entire form back to step 1
-function resetFormToStep1() {
-    individualRegForm.reset();
-    clearFilePreview();
-    showStep(1);
-    step1Error.classList.add('hidden');
-    step2Error.classList.add('hidden');
-    document.getElementById('reg-form-message').innerHTML = '';
-}
-
-// ── Step Navigation ──────────────────────────────────────────────────
-
-function showStep(num) {
-    if (num === 1) {
-        step2.classList.add('hidden');
-        step1.classList.remove('hidden');
-        gsap.fromTo(step1, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.4 });
-        stepInd1.classList.add('active');
-        stepInd1.classList.remove('completed');
-        stepInd2.classList.remove('active');
-    } else {
-        step1.classList.add('hidden');
-        step2.classList.remove('hidden');
-        gsap.fromTo(step2, { opacity: 0, x: 30 }, { opacity: 1, x: 0, duration: 0.4 });
-        stepInd1.classList.remove('active');
-        stepInd1.classList.add('completed');
-        stepInd2.classList.add('active');
-    }
-}
-
-// Proceed to Step 2 — validate Step 1 first
-proceedBtn.addEventListener('click', () => {
-    const name = document.getElementById('reg-name').value.trim();
-    const phone = document.getElementById('reg-phone').value.trim();
-    const email = document.getElementById('reg-email').value.trim();
-    const college = document.getElementById('reg-college').value.trim();
-    const selectedEvents = [...individualRegForm.querySelectorAll('input[name="events"]:checked')].map(cb => cb.value);
-
-    // Validate
-    if (!name) return showStep1Error('Please enter your name.');
-    if (!/^[0-9]{10}$/.test(phone)) return showStep1Error('Please enter a valid 10-digit contact number.');
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showStep1Error('Please enter a valid email address.');
-    if (!college) return showStep1Error('Please enter your college / institution name.');
-    if (selectedEvents.length === 0) return showStep1Error('Please select at least one event to attend.');
-    const food = document.getElementById('reg-food').value;
-    if (!food) return showStep1Error('Please select your food preference (Veg / Non-Veg).');
-
-    // All good — build summary and go to step 2
-    step1Error.classList.add('hidden');
-    const summaryEl = document.getElementById('payment-summary-text');
-    summaryEl.innerHTML = `
-        <strong>${name}</strong> — ${college}<br>
-        <span class="summary-events"><i class="fas fa-calendar-check"></i> ${selectedEvents.join(' • ')}</span>
-    `;
-    showStep(2);
-    // Scroll to top of form
-    registerFormContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
-});
-
-function showStep1Error(msg) {
-    step1Error.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${msg}`;
-    step1Error.classList.remove('hidden');
-    gsap.fromTo(step1Error, { opacity: 0, y: -5 }, { opacity: 1, y: 0, duration: 0.3 });
-}
-
-// Back to Step 1
-backBtn.addEventListener('click', () => showStep(1));
-
-// Clear button (Step 1)
-document.getElementById('reset-reg-form').addEventListener('click', resetFormToStep1);
-
-// ── Food Preference Dropdown ──────────────────────────────────────────
-// No JS needed — native <select> handles state automatically.
-
-// ── File Upload ───────────────────────────────────────────────────────
-
-fileUploadArea.addEventListener('click', () => screenshotInput.click());
-
-// Drag & drop
-fileUploadArea.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    fileUploadArea.classList.add('drag-over');
-});
-fileUploadArea.addEventListener('dragleave', () => fileUploadArea.classList.remove('drag-over'));
-fileUploadArea.addEventListener('drop', (e) => {
-    e.preventDefault();
-    fileUploadArea.classList.remove('drag-over');
-    const file = e.dataTransfer.files[0];
-    if (file) handleFileSelected(file);
-});
-
-screenshotInput.addEventListener('change', (e) => {
-    if (e.target.files[0]) handleFileSelected(e.target.files[0]);
-});
-
-function handleFileSelected(file) {
-    // Type check
-    if (!file.type.startsWith('image/')) {
-        showStep2Error('Please upload an image file (PNG, JPG, WEBP).');
-        return;
-    }
-    // Size check (5MB)
-    if (file.size > 5 * 1024 * 1024) {
-        showStep2Error('File is too large. Please upload an image under 5 MB.');
-        return;
-    }
-    step2Error.classList.add('hidden');
-
-    const reader = new FileReader();
-    reader.onload = (ev) => {
-        previewImg.src = ev.target.result;
-        previewName.textContent = file.name;
-        previewSize.textContent = `${(file.size / 1024).toFixed(1)} KB`;
-        filePlaceholder.classList.add('hidden');
-        filePreview.classList.remove('hidden');
-    };
-    reader.readAsDataURL(file);
-}
-
-removeFileBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    clearFilePreview();
-});
-
-function clearFilePreview() {
-    screenshotInput.value = '';
-    previewImg.src = '';
-    previewName.textContent = '';
-    previewSize.textContent = '';
-    filePlaceholder.classList.remove('hidden');
-    filePreview.classList.add('hidden');
-}
-
-function showStep2Error(msg) {
-    step2Error.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${msg}`;
-    step2Error.classList.remove('hidden');
-    gsap.fromTo(step2Error, { opacity: 0, y: -5 }, { opacity: 1, y: 0, duration: 0.3 });
-}
-
-// ── Form Submission ───────────────────────────────────────────────────
-
-const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxOHiP4FJL-pKOLuneIVY8LsU_3A8D7wjGXcGJaaGz5_bYn8R3ej1tPivdraIJJ-g7S/exec";
-
-individualRegForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const submitBtn = document.getElementById('reg-submit-btn');
-    const msgDiv = document.getElementById('reg-form-message');
-
-    // Validate Step 2 fields
-    const txnId = document.getElementById('reg-txn-id').value.trim();
-    if (!txnId) { showStep2Error('Please enter the Transaction ID.'); return; }
-    if (!screenshotInput.files[0]) { showStep2Error('Please upload your payment screenshot.'); return; }
-
-    step2Error.classList.add('hidden');
-    submitBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Sending Ravens...`;
-    submitBtn.disabled = true;
-    msgDiv.innerHTML = '';
-
-    // Read screenshot as base64
-    const file = screenshotInput.files[0];
-    const reader = new FileReader();
-
-    reader.onload = async (ev) => {
-        const selectedEvents = [...individualRegForm.querySelectorAll('input[name="events"]:checked')].map(cb => cb.value);
-
-        const data = {
-            name: document.getElementById('reg-name').value.trim(),
-            phone: document.getElementById('reg-phone').value.trim(),
-            email: document.getElementById('reg-email').value.trim(),
-            college: document.getElementById('reg-college').value.trim(),
-            events: selectedEvents.join(', '),
-            food: document.getElementById('reg-food').value,
-            fee: '₹200',
-            transactionId: txnId,
-            screenshotBase64: ev.target.result,      // full DataURL e.g. "data:image/png;base64,..."
-            screenshotName: file.name
-        };
-
-        try {
-            const response = await fetch(WEB_APP_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-                body: JSON.stringify(data)
-            });
-            const result = await response.json();
-
-            if (result.status === 'success') {
-                // Show cinematic full-screen success overlay
-                showSuccessOverlay(data.email);
-                individualRegForm.reset();
-                clearFilePreview();
-                showStep(1);
-            } else {
-                throw new Error(result.message || 'Server Error');
-            }
-        } catch (error) {
-            console.error('Submission failed:', error);
-            msgDiv.innerHTML = `<span class="msg-error"><i class="fas fa-times-circle"></i> A raven was intercepted. Please try again or contact us directly.</span>`;
-        } finally {
-            submitBtn.innerHTML = `Submit Registration <i class="fas fa-paper-plane"></i>`;
-            submitBtn.disabled = false;
-        }
-    };
-
-    reader.readAsDataURL(file);
-});
-
-
-// =====================================================================
-// SUCCESS OVERLAY — cinematic full-screen card after registration
-// =====================================================================
-const successOverlay   = document.getElementById('success-overlay');
-const successCard      = document.getElementById('success-card');
-const successExploreBtn= document.getElementById('success-explore-btn');
-const successEmailText = document.getElementById('success-email-text');
-const particlesCanvas  = document.getElementById('success-particles');
-let   particleAnim     = null;
-
-function showSuccessOverlay(email) {
-    // Inject email
-    successEmailText.textContent = email || '—';
-
-    // Show overlay
-    successOverlay.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-
-    // Re-trigger SVG stroke animations by cloning (reset dashoffset)
-    const svgEl = successCard.querySelector('.success-checkmark');
-    const clone = svgEl.cloneNode(true);
-    svgEl.replaceWith(clone);
-
-    // Card entrance
-    successCard.classList.remove('animate-in');
-    void successCard.offsetWidth; // force reflow
-    successCard.classList.add('animate-in');
-
-    // Particle burst
-    startParticles();
-}
-
-function hideSuccessOverlay() {
-    gsap.to(successCard, {
-        scale: 0.9,
-        opacity: 0,
-        duration: 0.3,
-        ease: 'power2.in',
-        onComplete: () => {
-            successOverlay.classList.add('hidden');
-            successCard.style.transform = '';
-            successCard.style.opacity = '';
-            stopParticles();
-            document.body.style.overflow = 'auto';
-        }
-    });
-}
-
-// "Continue Exploring" — hide overlay and scroll to events section
-successExploreBtn.addEventListener('click', () => {
-    hideSuccessOverlay();
-    setTimeout(() => {
-        const eventsSection = document.getElementById('events');
-        if (eventsSection) {
-            eventsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }, 350);
-});
-
-// ── Ambient particle system ──────────────────────────────────────────
-function startParticles() {
-    const canvas = particlesCanvas;
-    const ctx    = canvas.getContext('2d');
-    canvas.width  = canvas.offsetWidth;
-    canvas.height = canvas.offsetHeight;
-
-    const W = canvas.width;
-    const H = canvas.height;
-    const COLORS = ['#e65c00', '#ff8c42', '#990000', '#ffcc88', '#ff5500', '#ffd700'];
-    const COUNT  = 70;
-
-    const particles = Array.from({ length: COUNT }, () => ({
-        x:  W / 2 + (Math.random() - 0.5) * 60,
-        y:  H / 2 + (Math.random() - 0.5) * 60,
-        vx: (Math.random() - 0.5) * 4.5,
-        vy: (Math.random() - 0.5) * 4.5 - 1.5,
-        r:  Math.random() * 3 + 1.2,
-        alpha: 1,
-        decay: Math.random() * 0.012 + 0.008,
-        color: COLORS[Math.floor(Math.random() * COLORS.length)]
-    }));
-
-    let running = true;
-
-    function draw() {
-        if (!running) return;
-        ctx.clearRect(0, 0, W, H);
-        particles.forEach(p => {
-            p.x     += p.vx;
-            p.y     += p.vy;
-            p.vy    += 0.055; // gravity
-            p.alpha -= p.decay;
-            if (p.alpha < 0) p.alpha = 0;
-            ctx.save();
-            ctx.globalAlpha = p.alpha;
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = p.color;
-            ctx.shadowBlur = 8;
-            ctx.shadowColor = p.color;
-            ctx.fill();
-            ctx.restore();
-        });
-        particleAnim = requestAnimationFrame(draw);
-    }
-
-    draw();
-
-    // Respawn after 2.5 s to keep ambient sparkle
-    setTimeout(() => {
-        if (!running) return;
-        particles.forEach(p => {
-            p.x     = W / 2 + (Math.random() - 0.5) * 120;
-            p.y     = H / 2 + (Math.random() - 0.5) * 120;
-            p.vx    = (Math.random() - 0.5) * 2;
-            p.vy    = (Math.random() - 0.5) * 2 - 0.5;
-            p.alpha = Math.random() * 0.4 + 0.1;
-            p.r     = Math.random() * 2 + 0.8;
-            p.decay = 0.003 + Math.random() * 0.005;
-        });
-    }, 2500);
-
-    particlesCanvas._stopFn = () => { running = false; };
-}
-
-function stopParticles() {
-    if (particleAnim) cancelAnimationFrame(particleAnim);
-    if (particlesCanvas._stopFn) particlesCanvas._stopFn();
-    const ctx = particlesCanvas.getContext('2d');
-    ctx.clearRect(0, 0, particlesCanvas.width, particlesCanvas.height);
-}
-
-
-
 // Interactive Dragon Scale Background Parallax
 const dragonBg = document.querySelector('.dragon-background');
 
 // Mouse movement parallax
 document.addEventListener('mousemove', (e) => {
-    // Only apply if the overlay is hidden (user is not filling form)
+    // Only apply if the overlay is hidden
     if (eventOverlay.classList.contains('hidden')) {
         const x = (window.innerWidth - e.pageX * 2) / 80;
         const y = (window.innerHeight - e.pageY * 2) / 80;
@@ -852,7 +513,6 @@ window.addEventListener('scroll', () => {
 const scrollHint = document.getElementById('scroll-down-hint');
 let scrollHintTimer = null;
 let scrollHintShown = false;
-let isHicking = false;
 
 function showScrollHint() {
     if (scrollHintShown) return;
@@ -888,99 +548,100 @@ scrollHint.addEventListener('click', () => {
     window.scrollTo({ top: document.getElementById('events').offsetTop, behavior: 'smooth' });
 });
 
-/* ═══════════════════════════════════════════════════════════════
-   COUNTDOWN CLOCKS
-   ═══════════════════════════════════════════════════════════════ */
-(function initCountdowns() {
-    // Target dates (IST = UTC+5:30)
-    // Event: 09 September 2026, 09:00 AM IST
-    const EVENT_DATE = new Date('2026-09-09T09:00:00+05:30');
-    // Registration close: 07 September 2026, 11:59 PM IST
-    const REG_CLOSE_DATE = new Date('2026-09-07T23:59:59+05:30');
+/* =============================================================
+   POST-EVENT ELAPSED TIMER
+   Counts UP from 4 PM IST on 09 Sep 2026 (event completion)
+   Shows Years/Months dynamically once they become non-zero
+   ============================================================= */
+(function initElapsedTimer() {
+    // Event completed at 4:00 PM IST on 09 Sep 2026
+    const EVENT_END = new Date('2026-09-09T16:00:00+05:30');
 
-    /**
-     * Pads a number to 2 digits.
-     */
     function pad(n) { return String(Math.max(0, n)).padStart(2, '0'); }
 
-    /**
-     * Updates a single countdown-num element with flip animation if the value changed.
-     */
     function setNum(el, val) {
         const v = pad(val);
         if (el && el.textContent !== v) {
             el.classList.remove('flip-anim');
-            // Force reflow to restart animation
             void el.offsetWidth;
             el.textContent = v;
             el.classList.add('flip-anim');
         }
     }
 
-    /**
-     * Calculates remaining time from now to targetDate.
-     * Returns { days, hours, minutes, seconds, expired }
-     */
-    function getRemaining(targetDate) {
-        const diff = targetDate - Date.now();
-        if (diff <= 0) return { days: 0, hours: 0, minutes: 0, seconds: 0, expired: true };
+    function getElapsed() {
+        const now = Date.now();
+        const diff = now - EVENT_END.getTime();
+        if (diff <= 0) {
+            return { years: 0, months: 0, days: 0, hours: 0, minutes: 0, seconds: 0 };
+        }
+
         const totalSeconds = Math.floor(diff / 1000);
-        const days    = Math.floor(totalSeconds / 86400);
-        const hours   = Math.floor((totalSeconds % 86400) / 3600);
-        const minutes = Math.floor((totalSeconds % 3600) / 60);
-        const seconds = totalSeconds % 60;
-        return { days, hours, minutes, seconds, expired: false };
+
+        // Calculate years and months from the calendar difference
+        const endDate = new Date(EVENT_END);
+        const nowDate = new Date(now);
+
+        let years  = nowDate.getFullYear() - endDate.getFullYear();
+        let months = nowDate.getMonth()   - endDate.getMonth();
+
+        if (months < 0) { years--; months += 12; }
+
+        // Remaining days after stripping full months
+        const pivot = new Date(endDate);
+        pivot.setFullYear(pivot.getFullYear() + years);
+        pivot.setMonth(pivot.getMonth() + months);
+        const remainingMs = now - pivot.getTime();
+        const remainingSec = Math.floor(remainingMs / 1000);
+
+        const days    = Math.floor(remainingSec / 86400);
+        const hours   = Math.floor((remainingSec % 86400) / 3600);
+        const minutes = Math.floor((remainingSec % 3600) / 60);
+        const seconds = remainingSec % 60;
+
+        return { years, months, days, hours, minutes, seconds };
     }
 
-    // ── Event Countdown elements ─────────────────────────────────
-    const evtD = document.getElementById('evt-d');
-    const evtH = document.getElementById('evt-h');
-    const evtM = document.getElementById('evt-m');
-    const evtS = document.getElementById('evt-s');
-    const evtStrip = document.getElementById('event-countdown');
-    const evtWrapper = document.getElementById('event-countdown-wrapper');
-
-    // ── Registration Countdown elements ──────────────────────────
-    const regD = document.getElementById('reg-d');
-    const regH = document.getElementById('reg-h');
-    const regM = document.getElementById('reg-m');
-    const regS = document.getElementById('reg-s');
-    const regStrip = document.getElementById('reg-countdown');
-    const regSection = document.getElementById('reg-countdown-section');
-
-    function showExpired(stripEl, wrapperEl, message) {
-        if (!stripEl) return;
-        stripEl.innerHTML = `<span class="countdown-expired-msg">${message}</span>`;
-    }
+    const evtYr  = document.getElementById('evt-yr');
+    const evtMo  = document.getElementById('evt-mo');
+    const evtD   = document.getElementById('evt-d');
+    const evtH   = document.getElementById('evt-h');
+    const evtM   = document.getElementById('evt-m');
+    const evtS   = document.getElementById('evt-s');
+    const yrUnit  = document.getElementById('evt-years-unit');
+    const moUnit  = document.getElementById('evt-months-unit');
+    const sepYrMo = document.getElementById('sep-yr-mo');
+    const sepMoD  = document.getElementById('sep-mo-d');
 
     function tick() {
-        // — Event countdown —
-        const evt = getRemaining(EVENT_DATE);
-        if (evt.expired) {
-            showExpired(evtStrip, evtWrapper, '🔥 The Dragon Has Awakened 🔥');
+        const e = getElapsed();
+
+        // Show years once >= 1
+        if (e.years > 0) {
+            yrUnit.style.display  = '';
+            sepYrMo.style.display = '';
         } else {
-            setNum(evtD, evt.days);
-            setNum(evtH, evt.hours);
-            setNum(evtM, evt.minutes);
-            setNum(evtS, evt.seconds);
+            yrUnit.style.display  = 'none';
+            sepYrMo.style.display = 'none';
         }
 
-        // — Registration countdown —
-        const reg = getRemaining(REG_CLOSE_DATE);
-        if (reg.expired) {
-            showExpired(regStrip, regSection, '⚔️ The Gates Are Shut — Registration Closed ⚔️');
-            // Optionally hide the CTA button too
-            const cta = document.querySelector('.reg-countdown-cta');
-            if (cta) cta.style.display = 'none';
+        // Show months once >= 1 OR if years are already shown
+        if (e.months > 0 || e.years > 0) {
+            moUnit.style.display = '';
+            sepMoD.style.display = '';
         } else {
-            setNum(regD, reg.days);
-            setNum(regH, reg.hours);
-            setNum(regM, reg.minutes);
-            setNum(regS, reg.seconds);
+            moUnit.style.display = 'none';
+            sepMoD.style.display = 'none';
         }
+
+        setNum(evtYr, e.years);
+        setNum(evtMo, e.months);
+        setNum(evtD,  e.days);
+        setNum(evtH,  e.hours);
+        setNum(evtM,  e.minutes);
+        setNum(evtS,  e.seconds);
     }
 
-    // Run immediately then every second
     tick();
     setInterval(tick, 1000);
 })();
